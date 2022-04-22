@@ -21,6 +21,9 @@
       "require": "./dist/index.cjs",
       "import": "./dist/index.mjs",
       "types": "./dist/index.d.ts"
+    },
+    "./global": {
+      "types": "./global.d.ts"
     }
   },
   "main": "./dist/index.cjs",
@@ -36,7 +39,7 @@
   "scripts": {
     "build": "unbuild",
     "dev": "unbuild --stub",
-    "format": "prettier --write src/**/*.ts test/**/*.ts",
+    "format": "prettier --write global.d.ts src/**/*.ts test/**/*.ts examples/*.ts",
     "release": "bumpp --commit --push --tag && pnpm publish",
     "test": "vitest",
     "typecheck": "tsc --noEmit",
