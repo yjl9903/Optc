@@ -25,6 +25,12 @@ async function main(args: string[]) {
   if (first === '-h' || first === '--help') {
     console.log(`${name}/${version}`);
     console.log();
+    console.log('Usage:');
+    console.log('  optc <script> [...args]');
+    console.log();
+    console.log('Options:');
+    console.log('  -v, --version           Display version number');
+    console.log('  -h, --help              Display this message');
     return;
   }
 
