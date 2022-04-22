@@ -4,6 +4,6 @@ import { bootstrap } from '../src/core';
 
 describe('hello', () => {
   it('should work', () => {
-    expect(async () => await bootstrap('examples/echo.ts')).not.toThrow();
+    expect(async () => await bootstrap('examples/echo.ts', 'test')).not.toThrow();
   });
 });
