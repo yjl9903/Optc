@@ -1,5 +1,5 @@
-import { CAC, cac } from "cac";
-import path from "path";
+import path from 'path';
+import { CAC, cac } from 'cac';
 
 export async function bootstrap(script: string, ...args: string[]) {
   const jiti = (await import('jiti')).default(__filename);
@@ -41,7 +41,7 @@ class Optc {
   }
 
   async run(args: string[]) {
-    this.cac.parse(['node', this.scriptPath, ...args], { run: false })
+    this.cac.parse(['node', this.scriptPath, ...args], { run: false });
     await this.cac.runMatchedCommand();
   }
 }

@@ -1,8 +1,10 @@
 {
   "name": "optc",
   "version": "0.0.0",
-  "description": "",
-  "keywords": [],
+  "description": "An easy way to write TypeScript cli script application.",
+  "keywords": [
+    "cli"
+  ],
   "homepage": "https://github.com/yjl9903/optc#readme",
   "bugs": {
     "url": "https://github.com/yjl9903/optc/issues"
@@ -34,10 +36,11 @@
   "scripts": {
     "build": "unbuild",
     "dev": "unbuild --stub",
-    "format": "prettier --write src/**/*.ts",
-    "release": "bumpp --commit --push --tag",
+    "format": "prettier --write src/**/*.ts test/**/*.ts",
+    "release": "bumpp --commit --push --tag && pnpm publish",
     "test": "vitest",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "preversion": "pnpm build"
   },
   "dependencies": {
     "cac": "^6.7.12",

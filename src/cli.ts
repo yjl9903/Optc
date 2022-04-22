@@ -7,25 +7,25 @@ import { bootstrap } from './core';
 
 const name = 'optc';
 
-const platformInfo = `${process.platform}-${process.arch} node-${process.version}`
+const platformInfo = `${process.platform}-${process.arch} node-${process.version}`;
 
 const debug = createDebug(name + ':cli');
 
 async function main(args: string[]) {
   if (args.length === 0) {
-    console.error(lightRed('Error ') + 'You must provide <script>')
+    console.error(lightRed('Error ') + 'You must provide <script>');
     process.exit(1);
   }
 
   const first = args[0];
   if (first === '-v' || first === '--version') {
     console.log(`${name}/${version} ${platformInfo}`);
-    return ;
+    return;
   }
   if (first === '-h' || first === '--help') {
     console.log(`${name}/${version}`);
     console.log();
-    return ;
+    return;
   }
 
   const handle = (error: unknown) => {
