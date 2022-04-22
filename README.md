@@ -4,6 +4,12 @@
 
 An easy way to write TypeScript cli script application.
 
+## Installation
+
+```bash
+npm i -g optc
+```
+
 ## Usage
 
 See example [echo.ts](./examples/echo.ts).
