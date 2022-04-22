@@ -5,11 +5,11 @@ export async function bootstrap(script: string, ...args: string[]) {
   const jiti = (await import('jiti')).default(__filename);
   const module = await jiti(path.resolve(process.cwd(), script));
 
-  const cli = new Opts(script, module);
+  const cli = new Optc(script, module);
   await cli.run(args);
 }
 
-class Opts {
+class Optc {
   private readonly scriptPath: string;
 
   private readonly rawModule: Record<string, any>;

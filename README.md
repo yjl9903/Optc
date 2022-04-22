@@ -1,16 +1,16 @@
-# Opts
+# Optc
 
-[![CI](https://github.com/yjl9903/Opts/actions/workflows/ci.yml/badge.svg)](https://github.com/yjl9903/Opts/actions/workflows/ci.yml)
+[![CI](https://github.com/yjl9903/Optc/actions/workflows/ci.yml/badge.svg)](https://github.com/yjl9903/Optc/actions/workflows/ci.yml)
 
 An easy way to write TypeScript cli script application.
 
 ## Usage
 
 ```bash
-opts examples/echo.ts
+optc examples/echo.ts
 # Hello, world!
 
-opts examples/echo.ts --version
+optc examples/echo.ts --version
 # echo/0.0.0 win32-x64 node-v16.14.2
 ```
 

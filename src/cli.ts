@@ -5,7 +5,7 @@ import { version } from '../package.json';
 
 import { bootstrap } from './core';
 
-const name = 'opts';
+const name = 'optc';
 
 const platformInfo = `${process.platform}-${process.arch} node-${process.version}`
 
@@ -19,11 +19,11 @@ async function main(args: string[]) {
 
   const first = args[0];
   if (first === '-v' || first === '--version') {
-    console.log(`opts/${version} ${platformInfo}`);
+    console.log(`${name}/${version} ${platformInfo}`);
     return ;
   }
   if (first === '-h' || first === '--help') {
-    console.log(`opts/${version}`);
+    console.log(`${name}/${version}`);
     console.log();
     return ;
   }

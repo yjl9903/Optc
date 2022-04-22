@@ -1,4 +1,4 @@
-#!/usr/bin/env opts
+#!/usr/bin/env optc
 
 export const name = 'echo';
 

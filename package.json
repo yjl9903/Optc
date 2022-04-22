@@ -1,15 +1,15 @@
 {
-  "name": "opts",
+  "name": "optc",
   "version": "0.0.0",
   "description": "",
   "keywords": [],
-  "homepage": "https://github.com/yjl9903/opts#readme",
+  "homepage": "https://github.com/yjl9903/optc#readme",
   "bugs": {
-    "url": "https://github.com/yjl9903/opts/issues"
+    "url": "https://github.com/yjl9903/optc/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yjl9903/opts.git"
+    "url": "git+https://github.com/yjl9903/optc.git"
   },
   "license": "MIT",
   "author": "XLor",
@@ -25,7 +25,7 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "bin": {
-    "opts": "./cli.mjs"
+    "optc": "./cli.mjs"
   },
   "files": [
     "dist",
