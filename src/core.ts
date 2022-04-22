@@ -14,7 +14,7 @@ class Optc {
 
   private readonly rawModule: Record<string, any>;
 
-  private cac!: CAC;
+  private readonly cac: CAC;
 
   constructor(script: string, rawModule: Record<string, any>) {
     this.scriptPath = script;
