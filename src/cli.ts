@@ -1,3 +1,4 @@
+import { writeFileSync } from 'fs';
 import { lightRed } from 'kolorist';
 import { debug as createDebug } from 'debug';
 
@@ -21,16 +22,25 @@ async function main(args: string[]) {
   if (first === '-v' || first === '--version') {
     console.log(`${name}/${version} ${platformInfo}`);
     return;
-  }
-  if (first === '-h' || first === '--help') {
+  } else if (first === '-h' || first === '--help') {
     console.log(`${name}/${version}`);
     console.log();
     console.log('Usage:');
-    console.log('  optc <script> [...args]');
+    console.log('  $ optc <script> [...args]');
     console.log();
+    console.log('Commands:')
+    console.log('  new <script>  Create a new empty script')
+    console.log()
     console.log('Options:');
     console.log('  -v, --version           Display version number');
     console.log('  -h, --help              Display this message');
+    return;
+  } else if (first === 'new') {
+    const filename = args[1];
+    if (filename) {
+      const template = ['#!/usr/bin/env optc', '', '/// <reference types="optc/global" />', '', ''];
+      writeFileSync(filename, template.join('\n'), 'utf-8');
+    }
     return;
   }
 
