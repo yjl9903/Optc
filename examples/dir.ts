@@ -4,5 +4,5 @@
 
 export default function () {
   cd('examples');
-  console.log('Current:', pwd());
+  pwd();
 }
