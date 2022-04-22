@@ -29,6 +29,7 @@ jobs:
           pnpm test
           pnpm link -g
           chmod +x examples/echo.ts
-          if [ $(./examples/echo.ts hello) != "hello1" ] ; then
+          ./examples/echo.ts hello
+          if [ $(./examples/echo.ts hello) != "hello" ] ; then
             exit 1
           fi
