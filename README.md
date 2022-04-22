@@ -6,13 +6,41 @@ An easy way to write TypeScript cli script application.
 
 ## Usage
 
+See example [echo.ts](./examples/echo.ts).
+
+```ts
+#!/usr/bin/env optc
+
+export const name = 'echo';
+
+export const version = '0.0.0';
+
+export default function(text: string) {
+  console.log(text);
+}
+
+export function greet(name?: string) {
+  console.log(`Hello, ${ name ?? 'Stranger' }`);
+}
+```
+
+Optc will automatically generate a default command with a required paramter `text` and a subcommand `greet` with an optional paramter `name`.
+
 ```bash
-optc examples/echo.ts 'Hello, world'
-# Hello, world
+optc examples/echo.ts word
+# word
 
 optc examples/echo.ts --version
 # echo/0.0.0 win32-x64 node-v16.14.2
+
+# or use it directly
+./examples/echo.ts greet Optc
+# Hello, Optc
 ```
+
+### Limitation
+
+Optc extracts type infomation with regular expressions, so you **can not** do some type magic (union type, generic type and so on) on the types of paramters.
 
 ## Inspiration
 
