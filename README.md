@@ -7,8 +7,8 @@ An easy way to write TypeScript cli script application.
 ## Usage
 
 ```bash
-optc examples/echo.ts
-# Hello, world!
+optc examples/echo.ts 'Hello, world'
+# Hello, world
 
 optc examples/echo.ts --version
 # echo/0.0.0 win32-x64 node-v16.14.2

@@ -10,5 +10,8 @@ export default defineBuildConfig({
   rollup: {
     emitCJS: true,
   },
+  replace: {
+    'import.meta.vitest': 'undefined',
+  },
   externals: [path.join(__dirname, './package.json')],
 });
