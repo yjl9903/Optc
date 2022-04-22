@@ -1,3 +1,4 @@
+import path from 'path';
 import { writeFileSync } from 'fs';
 import { lightRed } from 'kolorist';
 import { debug as createDebug } from 'debug';
@@ -38,7 +39,8 @@ async function main(args: string[]) {
   } else if (first === 'new') {
     const filename = args[1];
     if (filename) {
-      const template = ['#!/usr/bin/env optc', '', '/// <reference types="optc/global" />', '', ''];
+      const globalDts = path.join(__dirname, '../global.d.ts');
+      const template = ['#!/usr/bin/env optc', '', `/// <reference path="${globalDts}" />`, '', ''];
       const name = filename.endsWith('.ts') ? filename : filename + '.ts';
       writeFileSync(name, template.join('\n'), 'utf-8');
     }
