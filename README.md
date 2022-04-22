@@ -1,6 +1,6 @@
 # Optc
 
-[![CI](https://github.com/yjl9903/Optc/actions/workflows/ci.yml/badge.svg)](https://github.com/yjl9903/Optc/actions/workflows/ci.yml)
+[![version](https://img.shields.io/npm/v/optc?color=rgb%2850%2C203%2C86%29&label=Optc)](https://www.npmjs.com/package/optc) [![CI](https://github.com/yjl9903/Optc/actions/workflows/ci.yml/badge.svg)](https://github.com/yjl9903/Optc/actions/workflows/ci.yml)
 
 An easy way to write TypeScript cli script application.
 
