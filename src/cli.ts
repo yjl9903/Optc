@@ -28,9 +28,9 @@ async function main(args: string[]) {
     console.log('Usage:');
     console.log('  $ optc <script> [...args]');
     console.log();
-    console.log('Commands:')
-    console.log('  new <script>  Create a new empty script')
-    console.log()
+    console.log('Commands:');
+    console.log('  new <script>  Create a new empty script');
+    console.log();
     console.log('Options:');
     console.log('  -v, --version           Display version number');
     console.log('  -h, --help              Display this message');
