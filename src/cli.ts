@@ -39,7 +39,8 @@ async function main(args: string[]) {
     const filename = args[1];
     if (filename) {
       const template = ['#!/usr/bin/env optc', '', '/// <reference types="optc/global" />', '', ''];
-      writeFileSync(filename, template.join('\n'), 'utf-8');
+      const name = filename.endsWith('.ts') ? filename : filename + '.ts';
+      writeFileSync(name, template.join('\n'), 'utf-8');
     }
     return;
   }
