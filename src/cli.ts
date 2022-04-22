@@ -42,7 +42,16 @@ async function main(args: string[]) {
       const filename = _filename.endsWith('.ts') ? _filename : _filename + '.ts';
       if (!existsSync(filename)) {
         const globalDts = path.join(__dirname, '../global.d.ts');
-        const template = ['#!/usr/bin/env optc', '', `/// <reference path="${globalDts}" />`, '', ''];
+        const template = [
+          '#!/usr/bin/env optc',
+          '',
+          `/// <reference path="${globalDts}" />`,
+          '',
+          'export default async function() {',
+          '  ',
+          '}',
+          ''
+        ];
         writeFileSync(filename, template.join('\n'), 'utf-8');
       } else {
         console.error(lightRed('Error ') + `${filename} exists`);
