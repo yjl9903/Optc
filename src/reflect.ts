@@ -19,8 +19,8 @@ export interface Command {
   default: boolean;
 }
 
-const exportDefaultFunctionRE = /\bexport\s+default\s+function(\s*[a-zA-Z0-9_\-]*)\s*\(([^)]*)\)/;
-const exportFunctionRE = /\bexport\s+function\s+([a-zA-Z0-9_\-]+)\s*\(([^)]*)\)/g;
+const exportDefaultFunctionRE = /\bexport\s+default(?:\s+async)?\s+function(\s*[a-zA-Z0-9_\-]*)\s*\(([^)]*)\)/;
+const exportFunctionRE = /\bexport(?:\s+async)?\s+function\s+([a-zA-Z0-9_\-]+)\s*\(([^)]*)\)/g;
 
 export function reflect(script: string) {
   const content = readFileSync(script, 'utf-8');
@@ -197,5 +197,25 @@ if (import.meta.vitest) {
         },
       ]
     `);
+
+    expect(getExportFunction('export default async function() {}')).toMatchInlineSnapshot(`
+      [
+        {
+          "arguments": [],
+          "default": true,
+          "name": "",
+        },
+      ]
+    `)
+
+    expect(getExportFunction('export  async  function hello () {}')).toMatchInlineSnapshot(`
+      [
+        {
+          "arguments": [],
+          "default": false,
+          "name": "hello",
+        },
+      ]
+    `)
   });
 }

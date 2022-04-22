@@ -2,12 +2,14 @@ import path from 'path';
 import { CAC, cac } from 'cac';
 
 import { reflect } from './reflect';
+import { registerGlobal } from './global';
 
 export async function bootstrap(script: string, ...args: string[]) {
   const jiti = (await import('jiti')).default(__filename, { cache: true, sourceMaps: false });
   const module = await jiti(path.resolve(process.cwd(), script));
 
   const cli = new Optc(script, module);
+  registerGlobal();
   await cli.run(args);
 }
 
