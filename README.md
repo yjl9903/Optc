@@ -4,6 +4,16 @@
 
 An easy way to write TypeScript cli script application.
 
+## Usage
+
+```bash
+opts examples/echo.ts
+# Hello, world!
+
+opts examples/echo.ts --version
+# echo/0.0.0 win32-x64 node-v16.14.2
+```
+
 ## Inspiration
 
 + [argc](https://github.com/sigoden/argc): A handy way to handle sh/bash cli parameters.
