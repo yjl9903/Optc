@@ -1,5 +1,5 @@
 import path from 'path';
-import { writeFileSync } from 'fs';
+import { existsSync, writeFileSync } from 'fs';
 import { lightRed } from 'kolorist';
 import { debug as createDebug } from 'debug';
 
@@ -37,12 +37,16 @@ async function main(args: string[]) {
     console.log('  -h, --help              Display this message');
     return;
   } else if (first === 'new') {
-    const filename = args[1];
-    if (filename) {
-      const globalDts = path.join(__dirname, '../global.d.ts');
-      const template = ['#!/usr/bin/env optc', '', `/// <reference path="${globalDts}" />`, '', ''];
-      const name = filename.endsWith('.ts') ? filename : filename + '.ts';
-      writeFileSync(name, template.join('\n'), 'utf-8');
+    const _filename = args[1];
+    if (_filename) {
+      const filename = _filename.endsWith('.ts') ? _filename : _filename + '.ts';
+      if (!existsSync(filename)) {
+        const globalDts = path.join(__dirname, '../global.d.ts');
+        const template = ['#!/usr/bin/env optc', '', `/// <reference path="${globalDts}" />`, '', ''];
+        writeFileSync(filename, template.join('\n'), 'utf-8');
+      } else {
+        console.error(lightRed('Error ') + `${filename} exists`);
+      }
     }
     return;
   }
