@@ -25,4 +25,8 @@ jobs:
       - name: Build
         run: pnpm build
       - name: Test
-        run: pnpm test
+        run: |
+          pnpm test
+          pnpm link -g
+          chmod +x examples/echo.ts
+          ./examples/echo.ts hello
