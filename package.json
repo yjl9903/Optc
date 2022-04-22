@@ -33,6 +33,7 @@
   ],
   "scripts": {
     "build": "unbuild",
+    "dev": "unbuild --stub",
     "format": "prettier --write src/**/*.ts",
     "release": "bumpp --commit --push --tag",
     "test": "vitest",
@@ -41,6 +42,7 @@
   "dependencies": {
     "cac": "^6.7.12",
     "debug": "^4.3.4",
+    "jiti": "^1.13.0",
     "kolorist": "^1.5.1"
   },
   "devDependencies": {

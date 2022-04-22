@@ -1,29 +1,36 @@
-import cac from 'cac';
 import { lightRed } from 'kolorist';
 import { debug as createDebug } from 'debug';
 
 import { version } from '../package.json';
 
-import { CliOption } from './types';
+import { bootstrap } from './core';
 
 const name = 'opts';
 
+const platformInfo = `${process.platform}-${process.arch} node-${process.version}`
+
 const debug = createDebug(name + ':cli');
 
-const cli = cac(name);
+async function main(args: string[]) {
+  if (args.length === 0) {
+    console.error(lightRed('Error ') + 'You must provide <script>')
+    process.exit(1);
+  }
 
-cli.command('').action(async (_option: CliOption) => {
-  console.log('Hello world');
-});
+  const first = args[0];
+  if (first === '-v' || first === '--version') {
+    console.log(`opts/${version} ${platformInfo}`);
+    return ;
+  }
+  if (first === '-h' || first === '--help') {
+    console.log(`opts/${version}`);
+    console.log();
+    return ;
+  }
 
-cli.help();
-
-cli.version(version);
-
-async function bootstrap() {
   const handle = (error: unknown) => {
     if (error instanceof Error) {
-      console.error(lightRed('Error: ') + error.message);
+      console.error(lightRed('Error ') + error.message);
     } else {
       console.error(error);
     }
@@ -35,12 +42,11 @@ async function bootstrap() {
   });
 
   try {
-    cli.parse(process.argv, { run: false });
-    await cli.runMatchedCommand();
+    bootstrap(args[0], ...args.slice(1));
   } catch (error: unknown) {
     handle(error);
     process.exit(1);
   }
 }
 
-bootstrap();
+main(process.argv.slice(2));

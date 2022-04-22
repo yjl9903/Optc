@@ -9,6 +9,7 @@ importers:
       bumpp: ^7.1.1
       cac: ^6.7.12
       debug: ^4.3.4
+      jiti: ^1.13.0
       kolorist: ^1.5.1
       prettier: ^2.6.0
       typescript: ^4.6.2
@@ -18,6 +19,7 @@ importers:
     dependencies:
       cac: 6.7.12
       debug: 4.3.4
+      jiti: 1.13.0
       kolorist: 1.5.1
     devDependencies:
       '@types/debug': 4.1.7
@@ -1198,7 +1200,6 @@ packages:
   /jiti/1.13.0:
     resolution: {integrity: sha512-/n9mNxZj/HDSrincJ6RP+L+yXbpnB8FybySBa+IjIaoH9FIxBbrbRT5XUbe8R7zuVM2AQqNMNDDqz0bzx3znOQ==}
     hasBin: true
-    dev: true
 
   /joycon/3.1.1:
     resolution: {integrity: sha512-34wB/Y7MW7bzjKRjUKTa46I2Z7eV62Rkhva+KkopW7Qvv/OSWBqvkSY7vusOPrNuZcUG3tApvdVgNB8POj3SPw==}

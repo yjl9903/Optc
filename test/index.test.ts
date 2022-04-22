@@ -1,7 +1,9 @@
 import { describe, expect, it } from 'vitest'
 
+import { bootstrap } from '../src/core'
+
 describe('hello', () => {
   it('should work', () => {
-    expect('Hello').toEqual('Hello');
+    expect(async () => await bootstrap('examples/echo.ts')).not.toThrow();
   });
 });
