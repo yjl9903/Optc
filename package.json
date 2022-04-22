@@ -34,7 +34,8 @@
   },
   "files": [
     "dist",
-    "*.mjs"
+    "*.mjs",
+    "*.d.ts"
   ],
   "scripts": {
     "build": "unbuild",
