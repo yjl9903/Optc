@@ -15,7 +15,7 @@ declare function pwd(): string;
 declare const $: Dollar;
 
 interface Dollar {
-  (pieces: string, ...args: string[]): void;
+  (pieces: TemplateStringsArray, ...args: any[]): Promise<void>;
 
   verbose: boolean;
 

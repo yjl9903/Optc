@@ -2,7 +2,7 @@ import path from 'path';
 import { CAC, cac } from 'cac';
 
 import { reflect } from './reflect';
-import { registerGlobal } from './register';
+import { registerGlobal } from './globals';
 
 export async function bootstrap(script: string, ...args: string[]) {
   const jiti = (await import('jiti')).default(__filename, { cache: true, sourceMaps: false });
