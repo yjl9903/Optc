@@ -1,5 +1,6 @@
 import * as path from 'path';
 import * as fs from 'fs-extra';
+import globby from 'globby';
 
 import type { ProcessResult } from './dist';
 
@@ -32,6 +33,11 @@ declare global {
    * fs-extra
    */
   declare const fs: typeof fs;
+
+  /**
+   * globby
+   */
+  declare const globby: typeof globby;
 
   declare const readFile: (filename: string) => string;
   declare const copy: typeof fs.copy;

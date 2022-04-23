@@ -1,5 +1,6 @@
-import * as fs from 'fs-extra';
 import path from 'path';
+import globby from 'globby';
+import * as fs from 'fs-extra';
 
 import { $, cd, pwd, readFile } from './globals';
 
@@ -30,6 +31,8 @@ export function registerGlobal() {
   global.fs = fs;
   // @ts-ignore
   global.readFile = readFile;
+  // @ts-ignore
+  global.globby = globby;
 
   for (const key of keys) {
     // @ts-ignore
