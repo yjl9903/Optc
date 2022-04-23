@@ -38,7 +38,7 @@ declare global {
   /**
    * globby
    */
-  declare const globby: typeof globby;
+  declare const glob: typeof globby;
 
   /**
    * axios

@@ -11,7 +11,7 @@ interface Option {
 export default async function (option: Option) {
   const root = option?.root ?? process.cwd();
   console.log(`Root: ${root}`);
-  const pkgs = await globby(['**/package.json', '!node_modules']);
+  const pkgs = await glob(['**/package.json', '!node_modules']);
   for (const name of pkgs) {
     const pkg = await readJson(name);
     console.log(`${pkg.name}: ${pkg.version}`);

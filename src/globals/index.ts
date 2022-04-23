@@ -33,7 +33,7 @@ export function registerGlobal() {
   // @ts-ignore
   global.readFile = readFile;
   // @ts-ignore
-  global.globby = globby;
+  global.glob = globby;
   // @ts-ignore
   global.sleep = sleep;
   // @ts-ignore

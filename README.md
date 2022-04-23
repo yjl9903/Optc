@@ -44,6 +44,18 @@ optc examples/echo.ts --version
 # Hello, Optc
 ```
 
+### Functions
+
+Optc has some builtin functions based on some famous libs.
+
++ `cd(dir: string)`: Change directory
++ `pwd()`: Print working directory
++ `` $`cmd` ``: Exec command like [zx](https://github.com/google/zx)
++ `path`: [Node.js Path API](https://nodejs.org/api/path.html)
++ `fs`: [fs-extra](https://www.npmjs.com/package/fs-extra)
++ `glob`: [globby](https://www.npmjs.com/package/globby)
++ `http`: [axios](https://www.npmjs.com/package/axios)
+
 ### Limitation
 
 Optc extracts type infomation with regular expressions, so you **can not** do some type magic (union type, generic type and so on) on the types of paramters.
