@@ -3,5 +3,6 @@
 /// <reference types="../globals" />
 
 export default async function () {
-  await $`node --version`;
+  const { stdout } = await $`node --version`;
+  console.log(`Version: ${stdout}`);
 }

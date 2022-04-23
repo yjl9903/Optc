@@ -1,21 +1,25 @@
-/**
- * Change directory
- *
- * @param dir
- */
-declare function cd(dir: string): void;
+import type { ProcessResult } from './dist';
 
-/**
- * Print working directory
- *
- * @returns working directory
- */
-declare function pwd(): string;
+declare global {
+  /**
+   * Change directory
+   *
+   * @param dir
+   */
+  declare function cd(dir: string): void;
 
-declare const $: Dollar;
+  /**
+   * Print working directory
+   *
+   * @returns working directory
+   */
+  declare function pwd(): string;
+
+  declare const $: Dollar;
+}
 
 interface Dollar {
-  (pieces: TemplateStringsArray, ...args: any[]): Promise<void>;
+  (pieces: TemplateStringsArray, ...args: any[]): Promise<ProcessResult>;
 
   verbose: boolean;
 

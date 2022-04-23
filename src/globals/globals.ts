@@ -2,6 +2,7 @@ import path from 'path';
 import { Process } from './process';
 
 $.prompt = '$';
+$.shell = true;
 $.verbose = true;
 
 let workingDir = process.cwd();
@@ -38,7 +39,7 @@ export function $(pieces: TemplateStringsArray, ...args: any[]) {
     return cmd.join(' ');
   };
 
-  return Process(parseCmd(), { cwd: workingDir, verbose: $.verbose });
+  return Process(parseCmd(), { cwd: workingDir, verbose: $.verbose, shell: $.shell });
 }
 
 export function cd(dir: string) {
