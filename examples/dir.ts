@@ -1,6 +1,6 @@
 #!/usr/bin/env optc
 
-/// <reference types="../global" />
+/// <reference types="../globals" />
 
 export default function () {
   cd('examples');

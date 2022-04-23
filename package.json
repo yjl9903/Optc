@@ -40,7 +40,7 @@
   "scripts": {
     "build": "unbuild",
     "dev": "unbuild --stub",
-    "format": "prettier --write global.d.ts src/**/*.ts test/**/*.ts examples/*.ts",
+    "format": "prettier --write globals.d.ts src/**/*.ts test/**/*.ts examples/*.ts",
     "release": "bumpp --commit --push --tag && pnpm publish",
     "test": "vitest",
     "typecheck": "tsc --noEmit",
