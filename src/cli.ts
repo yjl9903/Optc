@@ -1,11 +1,12 @@
 import path from 'path';
-import { existsSync, writeFileSync } from 'fs';
 import { lightRed } from 'kolorist';
+import { existsSync, writeFileSync } from 'fs';
 import { debug as createDebug } from 'debug';
 
 import { version } from '../package.json';
 
 import { bootstrap } from './core';
+import { Process } from './globals/process';
 
 const name = 'optc';
 
@@ -41,10 +42,11 @@ async function main(args: string[]) {
     if (_filename) {
       const filename = _filename.endsWith('.ts') ? _filename : _filename + '.ts';
       if (!existsSync(filename)) {
+        const globalsDts = path.join(__dirname, '../globals.d.ts');
         const template = [
           '#!/usr/bin/env optc',
           '',
-          `import 'optc/globals'`,
+          `/// <reference path="${globalsDts}" />`,
           '',
           'export default async function() {',
           '  ',
@@ -52,6 +54,11 @@ async function main(args: string[]) {
           ''
         ];
         writeFileSync(filename, template.join('\n'), 'utf-8');
+
+        const editor = process.env.EDITOR;
+        if (editor) {
+          await Process(`${editor} ${filename}`, { verbose: false });
+        }
       } else {
         console.error(lightRed('Error ') + `${filename} exists`);
       }
