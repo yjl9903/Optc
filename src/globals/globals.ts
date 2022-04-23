@@ -56,7 +56,7 @@ export function readFile(filename: string) {
 }
 
 export function sleep(ms: number): Promise<void> {
-  return new Promise(res => setTimeout(() => res(), ms));
+  return new Promise((res) => setTimeout(() => res(), ms));
 }
 
 function print(msg: string) {

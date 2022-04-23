@@ -1,10 +1,11 @@
 import path from 'path';
 import globby from 'globby';
 import * as fs from 'fs-extra';
+import axios from 'axios';
 
 import { $, cd, pwd, readFile, sleep } from './globals';
 
-const keys = [
+const fsKeys = [
   'copy',
   'mkdirp',
   'move',
@@ -35,8 +36,10 @@ export function registerGlobal() {
   global.globby = globby;
   // @ts-ignore
   global.sleep = sleep;
+  // @ts-ignore
+  global.http = axios;
 
-  for (const key of keys) {
+  for (const key of fsKeys) {
     // @ts-ignore
     global[key] = fs[key];
   }

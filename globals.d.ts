@@ -1,6 +1,7 @@
 import * as path from 'path';
 import * as fs from 'fs-extra';
 import globby from 'globby';
+import axios from 'axios';
 
 import type { ProcessResult } from './dist';
 
@@ -38,6 +39,11 @@ declare global {
    * globby
    */
   declare const globby: typeof globby;
+
+  /**
+   * axios
+   */
+  declare const http: typeof axios;
 
   declare const readFile: (filename: string) => string;
   declare const copy: typeof fs.copy;

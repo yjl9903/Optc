@@ -47,6 +47,7 @@
     "preversion": "pnpm build"
   },
   "dependencies": {
+    "axios": "^0.26.1",
     "cac": "^6.7.12",
     "debug": "^4.3.4",
     "fs-extra": "^10.1.0",
