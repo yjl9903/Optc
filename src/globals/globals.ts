@@ -1,3 +1,5 @@
+import { readFileSync } from 'fs';
+
 import { Process } from './process';
 
 $.prompt = '$';
@@ -47,6 +49,10 @@ export function cd(dir: string) {
 export function pwd() {
   print(process.cwd());
   return process.cwd();
+}
+
+export function readFile(filename: string) {
+  return readFileSync(filename, 'utf-8');
 }
 
 function print(msg: string) {

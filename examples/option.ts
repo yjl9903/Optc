@@ -9,5 +9,7 @@ interface Option {
 }
 
 export default async function (option: Option) {
-  console.log(`Root: ${option?.root}`);
+  const root = option?.root ?? process.cwd();
+  console.log(`Root: ${root}`);
+  console.log(await readJson(path.join(root, 'package.json')));
 }
