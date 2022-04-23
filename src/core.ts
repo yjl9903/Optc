@@ -3,6 +3,7 @@ import { CAC, cac } from 'cac';
 
 import { reflect } from './reflect';
 import { registerGlobal } from './globals';
+import { logWarn } from './utils';
 
 export async function bootstrap(script: string, ...args: string[]) {
   const jiti = (await import('jiti')).default(__filename, { cache: true, sourceMaps: false });
@@ -50,8 +51,12 @@ class Optc {
       }
 
       const fn = command.default ? this.rawModule.default : this.rawModule[command.name];
-      if (!fn) {
-        // TODO: warning
+      if (!fn || typeof fn !== 'function') {
+        if (command.default) {
+          logWarn(`Can not find default function`);
+        } else {
+          logWarn(`Can not find function ${command.name}`);
+        }
       }
 
       this.cac.command(name.join(' ')).action(fn);

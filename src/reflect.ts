@@ -1,5 +1,7 @@
 import { readFileSync } from 'fs';
 
+import { logWarn } from './utils';
+
 export enum ValueType {
   String = 'string',
   Number = 'number',
@@ -30,6 +32,8 @@ export function reflect(script: string) {
 
 function getExportFunction(content: string): Command[] {
   const transform = (match: RegExpExecArray): Command => {
+    const func = match[1].trim();
+
     const arg = match[2]
       .split(',')
       .map((s) => s.trim())
@@ -39,7 +43,7 @@ function getExportFunction(content: string): Command[] {
           const pos = s.indexOf(':');
 
           if (pos === 0) {
-            // TODO: warning
+            logWarn(`unknown (Parameter: ${s})`);
             return undefined;
           }
           const required = s[pos - 1] !== '?';
@@ -48,7 +52,7 @@ function getExportFunction(content: string): Command[] {
           const type = s.slice(pos + 1).trim();
 
           if (!isValueType(type)) {
-            // TODO: warning
+            logWarn(`Type ${type} is not number, boolean or string in ${name} of Function ${func}`);
             return undefined;
           }
 
@@ -67,10 +71,8 @@ function getExportFunction(content: string): Command[] {
       })
       .filter(Boolean) as Argument[];
 
-    const name = match[1].trim();
-
     return {
-      name,
+      name: func,
       arguments: arg,
       default: false
     };
