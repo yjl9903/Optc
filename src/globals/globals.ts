@@ -1,11 +1,8 @@
-import path from 'path';
 import { Process } from './process';
 
 $.prompt = '$';
 $.shell = true;
 $.verbose = true;
-
-let workingDir = process.cwd();
 
 export function $(pieces: TemplateStringsArray, ...args: any[]) {
   const parseCmd = () => {
@@ -39,17 +36,17 @@ export function $(pieces: TemplateStringsArray, ...args: any[]) {
     return cmd.join(' ');
   };
 
-  return Process(parseCmd(), { cwd: workingDir, verbose: $.verbose, shell: $.shell });
+  return Process(parseCmd(), { cwd: process.cwd(), verbose: $.verbose, shell: $.shell });
 }
 
 export function cd(dir: string) {
   print(`${$.prompt} cd ${dir}`);
-  workingDir = path.resolve(workingDir, dir);
+  process.chdir(dir);
 }
 
 export function pwd() {
-  print(workingDir);
-  return workingDir;
+  print(process.cwd());
+  return process.cwd();
 }
 
 function print(msg: string) {
