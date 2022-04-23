@@ -8,11 +8,11 @@ const keys = [
   'copy',
   'mkdirp',
   'move',
+  'remove',
   'outputFile',
   'readJson',
-  'outputJson',
-  'remove',
   'writeJson',
+  'outputJson',
   'emptyDir',
   'ensureFile',
   'ensureDir'
