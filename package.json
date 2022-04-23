@@ -22,8 +22,8 @@
       "import": "./dist/index.mjs",
       "types": "./dist/index.d.ts"
     },
-    "./global": {
-      "types": "./global.d.ts"
+    "./globals": {
+      "types": "./globals.d.ts"
     }
   },
   "main": "./dist/index.cjs",
