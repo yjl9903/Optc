@@ -55,6 +55,10 @@ export function readFile(filename: string) {
   return readFileSync(filename, 'utf-8');
 }
 
+export function sleep(ms: number): Promise<void> {
+  return new Promise(res => setTimeout(() => res(), ms));
+}
+
 function print(msg: string) {
   if ($.verbose) {
     console.log(msg);

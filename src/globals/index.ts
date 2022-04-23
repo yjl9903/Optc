@@ -2,7 +2,7 @@ import path from 'path';
 import globby from 'globby';
 import * as fs from 'fs-extra';
 
-import { $, cd, pwd, readFile } from './globals';
+import { $, cd, pwd, readFile, sleep } from './globals';
 
 const keys = [
   'copy',
@@ -33,6 +33,8 @@ export function registerGlobal() {
   global.readFile = readFile;
   // @ts-ignore
   global.globby = globby;
+  // @ts-ignore
+  global.sleep = sleep;
 
   for (const key of keys) {
     // @ts-ignore
