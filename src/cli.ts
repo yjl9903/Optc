@@ -54,13 +54,15 @@ async function main(args: string[]) {
           ''
         ];
         writeFileSync(filename, template.join('\n'), 'utf-8');
-
-        const editor = process.env.EDITOR;
-        if (editor) {
-          await Process(`${editor} ${filename}`, { verbose: false });
-        }
       } else {
         console.error(lightRed('Error ') + `${filename} exists`);
+      }
+
+      const editor = process.env.EDITOR;
+      if (editor === 'code') {
+        await Process(`${editor} --goto ${filename}:6:3`, { verbose: false });
+      } else if (editor) {
+        await Process(`${editor} ${filename}`, { verbose: false });
       }
     }
     return;
