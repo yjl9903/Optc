@@ -1,6 +1,6 @@
 #!/usr/bin/env optc
 
-/// <reference types="../globals" />
+import '../globals';
 
 export default async function () {
   const { stdout } = await $`node --version`;

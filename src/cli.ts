@@ -41,11 +41,10 @@ async function main(args: string[]) {
     if (_filename) {
       const filename = _filename.endsWith('.ts') ? _filename : _filename + '.ts';
       if (!existsSync(filename)) {
-        const globalsDts = path.join(__dirname, '../dist/globals.d.ts');
         const template = [
           '#!/usr/bin/env optc',
           '',
-          `/// <reference path="${globalsDts}" />`,
+          `import 'optc/globals'`,
           '',
           'export default async function() {',
           '  ',
