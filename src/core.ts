@@ -1,9 +1,9 @@
 import path from 'path';
 import { CAC, cac } from 'cac';
 
-import { reflect } from './reflect';
-import { registerGlobal } from './globals';
 import { logWarn } from './utils';
+import { registerGlobal } from './globals';
+import { reflect, ValueType } from './reflect';
 
 export async function bootstrap(script: string, ...args: string[]) {
   const jiti = (await import('jiti')).default(__filename, { cache: true, sourceMaps: false });
@@ -59,7 +59,21 @@ class Optc {
         }
       }
 
-      this.cac.command(name.join(' ')).action(fn);
+      command.options
+        .reduce((cmd, option) => {
+          let text = `--${option.name}`;
+          if (option.type === ValueType.String || option.type === ValueType.Number) {
+            if (option.required) {
+              text += ' <text>';
+            } else {
+              text += ' [text]';
+            }
+          } else if (option.type === ValueType.Array) {
+            text += ' [...text]';
+          }
+          return cmd.option(text, option.description);
+        }, this.cac.command(name.join(' '), command.description))
+        .action(fn);
     }
   }
 

@@ -15,14 +15,23 @@ export interface Argument {
   required: boolean;
 }
 
+export interface Option {
+  name: string;
+  type: ValueType;
+  required: boolean;
+  description: string;
+}
+
 export interface Command {
   name: string;
-  arguments: Argument[];
   default: boolean;
+  options: Option[];
+  arguments: Argument[];
+  description: string;
 }
 
 const exportDefaultFunctionRE =
-  /\bexport\s+default(?:\s+async)?\s+function(\s*[a-zA-Z0-9_\-]*)\s*\(([^)]*)\)/;
+  /\bexport\s+default(?:\s+async)?\s+function(\s*[a-zA-Z0-9_\-]*)\s*\(([^)]*)\)/g;
 const exportFunctionRE = /\bexport(?:\s+async)?\s+function\s+([a-zA-Z0-9_\-]+)\s*\(([^)]*)\)/g;
 
 export function reflect(script: string) {
@@ -34,11 +43,33 @@ function getExportFunction(content: string): Command[] {
   const transform = (match: RegExpExecArray): Command => {
     const func = match[1].trim();
 
+    const options: Option[] = [];
+
+    const getOption = (name: string) => {
+      const optionRE = new RegExp(`interface\\s+${name}\\s*{([^}]*)}`);
+      const match = optionRE.exec(content);
+      if (match) {
+        const body = match[1];
+        for (const field of matchAll(body, /([a-zA-Z0-9_]+)\s*(\??):\s*(string|number|boolean)/g)) {
+          if (isValueType(field[3])) {
+            options.push({
+              name: field[1],
+              required: field[2] === '',
+              type: field[3] as ValueType,
+              description: ''
+            });
+          }
+        }
+      } else {
+        logWarn(`Can not find option interface of Function ${func}`);
+      }
+    };
+
     const arg = match[2]
       .split(',')
       .map((s) => s.trim())
       .filter(Boolean)
-      .map((s) => {
+      .map((s, i, arr) => {
         if (s.includes(':')) {
           const pos = s.indexOf(':');
 
@@ -52,7 +83,13 @@ function getExportFunction(content: string): Command[] {
           const type = s.slice(pos + 1).trim();
 
           if (!isValueType(type)) {
-            logWarn(`Type ${type} is not number, boolean or string in ${name} of Function ${func}`);
+            if (i === arr.length - 1) {
+              getOption(type);
+            } else {
+              logWarn(
+                `Type ${type} is not number, boolean or string in ${name} of Function ${func}`
+              );
+            }
             return undefined;
           }
 
@@ -74,7 +111,9 @@ function getExportFunction(content: string): Command[] {
     return {
       name: func,
       arguments: arg,
-      default: false
+      options,
+      default: false,
+      description: ''
     };
   };
 
@@ -131,7 +170,9 @@ if (import.meta.vitest) {
             },
           ],
           "default": false,
+          "description": "",
           "name": "hello",
+          "options": [],
         },
       ]
     `);
@@ -147,27 +188,16 @@ if (import.meta.vitest) {
             },
           ],
           "default": true,
+          "description": "",
           "name": "",
+          "options": [],
         },
       ]
     `);
 
-    expect(getExportFunction('export default function hello(text?: string) {}'))
-      .toMatchInlineSnapshot(`
-      [
-        {
-          "arguments": [
-            {
-              "name": "text",
-              "required": false,
-              "type": "string",
-            },
-          ],
-          "default": true,
-          "name": "hello",
-        },
-      ]
-    `);
+    expect(
+      getExportFunction('export default function hello(text?: string) {}')
+    ).toMatchInlineSnapshot('[]');
 
     expect(getExportFunction(fns.join('\n'))).toMatchInlineSnapshot(`
       [
@@ -185,7 +215,9 @@ if (import.meta.vitest) {
             },
           ],
           "default": false,
+          "description": "",
           "name": "hello",
+          "options": [],
         },
         {
           "arguments": [
@@ -196,27 +228,58 @@ if (import.meta.vitest) {
             },
           ],
           "default": true,
+          "description": "",
           "name": "",
+          "options": [],
         },
       ]
     `);
 
-    expect(getExportFunction('export default async function() {}')).toMatchInlineSnapshot(`
-      [
-        {
-          "arguments": [],
-          "default": true,
-          "name": "",
-        },
-      ]
-    `);
+    expect(getExportFunction('export default async function() {}')).toMatchInlineSnapshot('[]');
 
     expect(getExportFunction('export  async  function hello () {}')).toMatchInlineSnapshot(`
       [
         {
           "arguments": [],
           "default": false,
+          "description": "",
           "name": "hello",
+          "options": [],
+        },
+      ]
+    `);
+  });
+
+  it('parse option', () => {
+    const inter = `interface Option { root: string; port?: number; open: boolean; }`;
+    const fn = `export default function (option: Option) {}`;
+    expect(getExportFunction(inter + fn)).toMatchInlineSnapshot(`
+      [
+        {
+          "arguments": [],
+          "default": true,
+          "description": "",
+          "name": "",
+          "options": [
+            {
+              "description": "",
+              "name": "root",
+              "required": true,
+              "type": "string",
+            },
+            {
+              "description": "",
+              "name": "port",
+              "required": false,
+              "type": "number",
+            },
+            {
+              "description": "",
+              "name": "open",
+              "required": true,
+              "type": "boolean",
+            },
+          ],
         },
       ]
     `);
