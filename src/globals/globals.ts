@@ -1,4 +1,4 @@
-import { readFileSync } from 'fs';
+import { readFileSync, readdirSync } from 'fs';
 
 import { Process } from './process';
 
@@ -49,6 +49,10 @@ export function cd(dir: string) {
 export function pwd() {
   print(process.cwd());
   return process.cwd();
+}
+
+export function ls(dir?: string): string[] {
+  return readdirSync(dir ?? process.cwd());
 }
 
 export function readFile(filename: string) {

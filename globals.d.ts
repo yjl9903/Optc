@@ -21,6 +21,11 @@ declare global {
   declare function pwd(): string;
 
   /**
+   * List files
+   */
+  declare function ls(dir?: string): string[];
+
+  /**
    * Exec command
    */
   declare const $: Dollar;

@@ -3,7 +3,7 @@ import globby from 'globby';
 import * as fs from 'fs-extra';
 import axios from 'axios';
 
-import { $, cd, pwd, readFile, sleep } from './globals';
+import { $, cd, pwd, ls, readFile, sleep } from './globals';
 
 const fsKeys = [
   'copy',
@@ -26,6 +26,8 @@ export function registerGlobal() {
   global.cd = cd;
   // @ts-ignore
   global.pwd = pwd;
+  // @ts-ignore
+  global.ls = ls;
   // @ts-ignore
   global.path = path;
   // @ts-ignore
