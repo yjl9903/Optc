@@ -1,4 +1,6 @@
+import os from 'os';
 import path from 'path';
+import fs from 'fs-extra';
 import { CAC, cac } from 'cac';
 
 import { logWarn } from './utils';
@@ -10,6 +12,15 @@ export async function bootstrap(script: string, ...args: string[]) {
     cache: true,
     sourceMaps: false
   });
+
+  if (!script.endsWith('.ts') && !path.basename(script).includes('.')) {
+    const tempDir = path.join(os.homedir(), '.optc/temp');
+    await fs.ensureDir(tempDir);
+    const content = await fs.readFile(script, 'utf-8');
+    script = path.join(tempDir, path.basename(script) + '.ts');
+    await fs.writeFile(script, content, 'utf-8');
+  }
+
   const module = await jiti(path.resolve(process.cwd(), script));
 
   const cli = new Optc(script, module);
