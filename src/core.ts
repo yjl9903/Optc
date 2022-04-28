@@ -6,7 +6,10 @@ import { registerGlobal } from './globals';
 import { reflect, ValueType } from './reflect';
 
 export async function bootstrap(script: string, ...args: string[]) {
-  const jiti = (await import('jiti')).default(__filename, { cache: true, sourceMaps: false });
+  const jiti = (await import('jiti')).default(__filename, {
+    cache: true,
+    sourceMaps: false
+  });
   const module = await jiti(path.resolve(process.cwd(), script));
 
   const cli = new Optc(script, module);

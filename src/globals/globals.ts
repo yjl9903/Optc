@@ -28,14 +28,14 @@ export function $(pieces: TemplateStringsArray, ...args: any[]) {
     let i = 0;
     while (i < args.length) {
       if (Array.isArray(args[i])) {
-        cmd.push(...args.map(escape));
+        cmd.push(args.map(escape).join(' '));
       } else {
         cmd.push(escape(args[i]));
       }
       cmd.push(pieces[++i]);
     }
 
-    return cmd.join(' ');
+    return cmd.join('');
   };
 
   return Process(parseCmd(), { cwd: process.cwd(), verbose: $.verbose, shell: $.shell });
