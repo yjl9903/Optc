@@ -50,7 +50,9 @@ declare global {
    */
   declare const http: typeof axios;
 
-  declare const readFile: (filename: string) => string;
+  declare const readTextFile: (filename: string) => string;
+  declare const writeTextFile: (filename: string, content: string) => void;
+
   declare const copy: typeof fs.copy;
   declare const mkdirp: typeof fs.mkdirp;
   declare const move: typeof fs.move;

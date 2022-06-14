@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync } from 'fs';
+import { readdirSync, readFileSync, writeFileSync, EncodingOption } from 'fs';
 
 import { Process } from './process';
 
@@ -55,8 +55,12 @@ export function ls(dir?: string): string[] {
   return readdirSync(dir ?? process.cwd());
 }
 
-export function readFile(filename: string) {
-  return readFileSync(filename, 'utf-8');
+export function readTextFile(filename: string, encode: EncodingOption = 'utf-8') {
+  return readFileSync(filename, encode);
+}
+
+export function writeTextFile(filename: string, content: string, encode: EncodingOption = 'utf-8') {
+  return writeFileSync(filename, content, encode);
 }
 
 export function sleep(ms: number): Promise<void> {

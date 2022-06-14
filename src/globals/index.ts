@@ -5,7 +5,7 @@ import axios from 'axios';
 import fs from 'fs-extra';
 import { globby } from 'globby';
 
-import { $, cd, pwd, ls, readFile, sleep } from './globals';
+import { $, cd, pwd, ls, readTextFile, writeTextFile, sleep } from './globals';
 
 export async function registerGlobal() {
   global.$ = $;
@@ -14,7 +14,8 @@ export async function registerGlobal() {
   global.ls = ls;
   global.path = path;
   global.fs = fs;
-  global.readFile = readFile;
+  global.readTextFile = readTextFile;
+  global.writeTextFile = writeTextFile;
   global.glob = globby;
   global.sleep = sleep;
   global.http = axios;
