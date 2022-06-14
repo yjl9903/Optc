@@ -1,7 +1,7 @@
 import path from 'path';
+import createDebug from 'debug';
 import { lightRed } from 'kolorist';
 import { existsSync, writeFileSync } from 'fs';
-import { debug as createDebug } from 'debug';
 
 import { version } from '../package.json';
 
@@ -82,7 +82,7 @@ async function main(args: string[]) {
   });
 
   try {
-    bootstrap(args[0], ...args.slice(1));
+    await bootstrap(args[0], ...args.slice(1));
   } catch (error: unknown) {
     handle(error);
     process.exit(1);
