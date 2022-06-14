@@ -2,8 +2,8 @@
 
 import path from 'path';
 import axios from 'axios';
+import fs from 'fs-extra';
 import { globby } from 'globby';
-import * as fs from 'fs-extra';
 
 import { $, cd, pwd, ls, readFile, sleep } from './globals';
 
