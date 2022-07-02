@@ -66,7 +66,7 @@
     "vite": "2.9.13",
     "vitest": "0.16.0"
   },
-  "packageManager": "pnpm@7.4.0",
+  "packageManager": "pnpm@7.5.0",
   "engines": {
     "node": ">=16.0.0"
   }
