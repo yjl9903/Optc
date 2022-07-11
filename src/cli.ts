@@ -1,6 +1,7 @@
 import path from 'path';
 import createDebug from 'debug';
 import { lightRed } from 'kolorist';
+import { fileURLToPath } from 'url';
 import { existsSync, writeFileSync } from 'fs';
 
 import { version } from '../package.json';
@@ -42,7 +43,7 @@ async function main(args: string[]) {
     if (_filename) {
       const filename = _filename.endsWith('.ts') ? _filename : _filename + '.ts';
       if (!existsSync(filename)) {
-        const globalsDts = path.join(__dirname, '../globals.d.ts');
+        const globalsDts = path.join(fileURLToPath(import.meta.url), '../../globals.d.ts');
         const template = [
           '#!/usr/bin/env optc',
           '',
