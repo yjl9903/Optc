@@ -199,7 +199,7 @@ if (import.meta.vitest) {
     expect(exportDefaultFunctionRE.test('export default function   () {}')).toBeTruthy();
   });
 
-  it.only('parse export function', () => {
+  it('parse export function', () => {
     const fns = [
       'export function hello(root?: string, text: string) {}',
       'export default function (text: string) {}'
@@ -329,7 +329,7 @@ if (import.meta.vitest) {
   it('parse option', () => {
     const inter = `interface Option { root: string; port?: number; open: boolean; }`;
     const fn = `export default function (option: Option) {}`;
-    expect(getExportFunction(inter + fn)).toMatchInlineSnapshot(`
+    expect(getExportFunction(inter + '\n' + fn)).toMatchInlineSnapshot(`
       [
         {
           "arguments": [],
