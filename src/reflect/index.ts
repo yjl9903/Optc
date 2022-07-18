@@ -1,6 +1,6 @@
 import { readFileSync } from 'fs';
 
-import { logWarn } from './utils';
+import { logWarn } from '../utils';
 
 export enum ValueType {
   String = 'string',
