@@ -15,7 +15,7 @@ importers:
       globby: ^13.1.2
       jiti: ^1.14.0
       kolorist: ^1.5.1
-      magic-regexp: ^0.2.1
+      magic-regexp: ^0.2.3
       prettier: ^2.7.1
       typescript: ^4.7.4
       unbuild: ^0.7.4
@@ -29,7 +29,7 @@ importers:
       globby: 13.1.2
       jiti: 1.14.0
       kolorist: 1.5.1
-      magic-regexp: 0.2.1_vite@3.0.2
+      magic-regexp: 0.2.3_vite@3.0.2
     devDependencies:
       '@types/debug': 4.1.7
       '@types/fs-extra': 9.0.13
@@ -1509,8 +1509,8 @@ packages:
       yallist: 4.0.0
     dev: true
 
-  /magic-regexp/0.2.1_vite@3.0.2:
-    resolution: {integrity: sha512-WJKy6nt7PT4u9i2CKlmCHcoTY0Cll9T0ZflgQ3cO6vIbuNC0u/OlhCIpd5fnwqiZs+ACPUHJpxBlvcU2G3iiSg==}
+  /magic-regexp/0.2.3_vite@3.0.2:
+    resolution: {integrity: sha512-dFoKIGxTaIuZ994mW/8BZMW5dudwJbD9oEGN4BpNFTLr6RMSaO82pHcdW0U0sGddmurtP7irM2vIw07K1AzHLw==}
     dependencies:
       estree-walker: 3.0.1
       magic-string: 0.26.2
@@ -1542,7 +1542,6 @@ packages:
     engines: {node: '>=12'}
     dependencies:
       sourcemap-codec: 1.4.8
-    dev: false
 
   /merge2/1.4.1:
     resolution: {integrity: sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==}
@@ -1606,7 +1605,7 @@ packages:
     resolution: {integrity: sha512-4GTELSSErv6ZZJYU98fZNuIBJcXSz+ktHdRrCYEqU1m6ZlebOCG0jwZ+IEd9vOrbpYsVBBMC5OTrEyLnKRcauQ==}
     dependencies:
       pathe: 0.2.0
-      pkg-types: 0.3.2
+      pkg-types: 0.3.3
     dev: true
 
   /mlly/0.5.4:
@@ -1614,7 +1613,6 @@ packages:
     dependencies:
       pathe: 0.3.2
       pkg-types: 0.3.3
-    dev: false
 
   /mri/1.2.0:
     resolution: {integrity: sha512-tzzskb3bG8LvYGFF/mDTpq3jpI6Q9wc3LEmBaghu+DdCssd1FakN7Bc0hVNmEyGq1bq3RgfkCb3cmQLpNPOroA==}
@@ -1667,7 +1665,6 @@ packages:
 
   /pathe/0.3.2:
     resolution: {integrity: sha512-qhnmX0TOqlCvdWWTkoM83wh5J8fZ2yhbDEc9MlsnAEtEc+JCwxUKEwmd6pkY9hRe6JR1Uecbc14VcAKX2yFSTA==}
-    dev: false
 
   /pathval/1.1.1:
     resolution: {integrity: sha512-Dp6zGqpTdETdR63lehJYPeIOqpiNBNtc7BpWSLrOje7UaIsE5aY92r/AunQA7rsXvet3lrJ3JnZX29UPTKXyKQ==}
@@ -1694,7 +1691,6 @@ packages:
       jsonc-parser: 3.0.0
       mlly: 0.5.4
       pathe: 0.3.2
-    dev: false
 
   /postcss/8.4.14:
     resolution: {integrity: sha512-E398TUmfAYFPBSdzgeieK2Y1+1cpdxJx8yXbK/m57nRhKSmk1GB2tO4lbLBtlkfPQTDKfe4Xqv1ASWPpayPEig==}
@@ -1759,7 +1755,7 @@ packages:
       rollup: ^2.55
       typescript: ^4.1
     dependencies:
-      magic-string: 0.26.1
+      magic-string: 0.26.2
       rollup: 2.70.1
       typescript: 4.7.4
     optionalDependencies:
