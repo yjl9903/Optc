@@ -1,4 +1,14 @@
-import { readFileSync } from 'fs';
+import { readFileSync } from 'node:fs';
+import {
+  createRegExp,
+  exactly,
+  oneOrMore,
+  whitespace,
+  word,
+  charNotIn,
+  global,
+  multiline
+} from 'magic-regexp';
 
 import { logWarn } from '../utils';
 
@@ -30,9 +40,39 @@ export interface Command {
   description: string;
 }
 
-const exportDefaultFunctionRE =
-  /\bexport\s+default(?:\s+async)?\s+function(\s*[a-zA-Z0-9_\-]*)\s*\(([^)]*)\)/g;
-const exportFunctionRE = /\bexport(?:\s+async)?\s+function\s+([a-zA-Z0-9_\-]+)\s*\(([^)]*)\)/g;
+const exportDefaultFunctionRE = createRegExp(
+  exactly('export')
+    .and(oneOrMore(whitespace))
+    .and(exactly('default'))
+    .and(oneOrMore(whitespace))
+    .and(exactly('async').and(oneOrMore(whitespace)).optionally())
+    .and(exactly('function'))
+    .and(oneOrMore(whitespace).and(oneOrMore(word)).optionally().as('name'))
+    .and(whitespace.times.any())
+    .and(exactly('('))
+    .and(charNotIn(')').times.any().as('parameters'))
+    .and(exactly(')'))
+    .at.lineStart(),
+  [multiline]
+);
+// const exportDefaultFunctionRE =
+//   /\bexport\s+default(?:\s+async)?\s+function(\s*[a-zA-Z0-9_\-]*)\s*\(([^)]*)\)/g;
+
+const exportFunctionRE = createRegExp(
+  exactly('export')
+    .and(oneOrMore(whitespace))
+    .and(exactly('async').and(oneOrMore(whitespace)).optionally())
+    .and(exactly('function'))
+    .and(oneOrMore(whitespace))
+    .and(oneOrMore(word).as('name'))
+    .and(whitespace.times.any())
+    .and(exactly('('))
+    .and(charNotIn(')').times.any().as('parameters'))
+    .and(exactly(')'))
+    .at.lineStart(),
+  [global, multiline]
+);
+// const exportFunctionRE = /\bexport(?:\s+async)?\s+function\s+([a-zA-Z0-9_\-]+)\s*\(([^)]*)\)/g;
 
 export function reflect(script: string) {
   const content = readFileSync(script, 'utf-8');
@@ -40,8 +80,12 @@ export function reflect(script: string) {
 }
 
 function getExportFunction(content: string): Command[] {
-  const transform = (match: RegExpExecArray): Command => {
-    const func = match[1].trim();
+  const transform = (
+    match: Omit<RegExpMatchArray, 'groups'> & {
+      groups: { name: string | undefined; parameters: string | undefined };
+    }
+  ): Command => {
+    const func = (match.groups.name ?? '').trim();
 
     const options: Option[] = [];
 
@@ -65,7 +109,7 @@ function getExportFunction(content: string): Command[] {
       }
     };
 
-    const arg = match[2]
+    const arg = (match.groups.parameters ?? '')
       .split(',')
       .map((s) => s.trim())
       .filter(Boolean)
@@ -117,8 +161,8 @@ function getExportFunction(content: string): Command[] {
     };
   };
 
-  const commands = matchAll(content, exportFunctionRE).map(transform);
-  const defaultCommand = exportDefaultFunctionRE.exec(content);
+  const commands = [...content.matchAll(exportFunctionRE)].map(transform);
+  const defaultCommand = content.match(exportDefaultFunctionRE);
   if (defaultCommand) {
     const cmd = transform(defaultCommand);
     cmd.default = true;
@@ -148,7 +192,14 @@ function matchAll(str: string, re: RegExp): RegExpExecArray[] {
 if (import.meta.vitest) {
   const { it, expect } = import.meta.vitest;
 
-  it('parse export function', () => {
+  it('should accept by RE', () => {
+    expect(exportDefaultFunctionRE.test('export default function() {}')).toBeTruthy();
+    expect(exportDefaultFunctionRE.test('export default function () {}')).toBeTruthy();
+    expect(exportDefaultFunctionRE.test('export default function  () {}')).toBeTruthy();
+    expect(exportDefaultFunctionRE.test('export default function   () {}')).toBeTruthy();
+  });
+
+  it.only('parse export function', () => {
     const fns = [
       'export function hello(root?: string, text: string) {}',
       'export default function (text: string) {}'
@@ -195,9 +246,24 @@ if (import.meta.vitest) {
       ]
     `);
 
-    expect(
-      getExportFunction('export default function hello(text?: string) {}')
-    ).toMatchInlineSnapshot('[]');
+    expect(getExportFunction('export default function hello(text?: string) {}'))
+      .toMatchInlineSnapshot(`
+      [
+        {
+          "arguments": [
+            {
+              "name": "text",
+              "required": false,
+              "type": "string",
+            },
+          ],
+          "default": true,
+          "description": "",
+          "name": "hello",
+          "options": [],
+        },
+      ]
+    `);
 
     expect(getExportFunction(fns.join('\n'))).toMatchInlineSnapshot(`
       [
@@ -235,7 +301,17 @@ if (import.meta.vitest) {
       ]
     `);
 
-    expect(getExportFunction('export default async function() {}')).toMatchInlineSnapshot('[]');
+    expect(getExportFunction('export default async function() {}')).toMatchInlineSnapshot(`
+      [
+        {
+          "arguments": [],
+          "default": true,
+          "description": "",
+          "name": "",
+          "options": [],
+        },
+      ]
+    `);
 
     expect(getExportFunction('export  async  function hello () {}')).toMatchInlineSnapshot(`
       [
