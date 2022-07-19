@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs';
 import {
   createRegExp,
+  MagicRegExpMatchArray,
   exactly,
   oneOrMore,
   whitespace,
@@ -55,8 +56,6 @@ const exportDefaultFunctionRE = createRegExp(
     .at.lineStart(),
   [multiline]
 );
-// const exportDefaultFunctionRE =
-//   /\bexport\s+default(?:\s+async)?\s+function(\s*[a-zA-Z0-9_\-]*)\s*\(([^)]*)\)/g;
 
 const exportFunctionRE = createRegExp(
   exactly('export')
@@ -72,7 +71,6 @@ const exportFunctionRE = createRegExp(
     .at.lineStart(),
   [global, multiline]
 );
-// const exportFunctionRE = /\bexport(?:\s+async)?\s+function\s+([a-zA-Z0-9_\-]+)\s*\(([^)]*)\)/g;
 
 export function reflect(script: string) {
   const content = readFileSync(script, 'utf-8');
@@ -86,11 +84,7 @@ export function reflect(script: string) {
 }
 
 function getExportFunction(content: string): Command[] {
-  const transform = (
-    match: Omit<RegExpMatchArray, 'groups'> & {
-      groups: { name: string | undefined; parameters: string | undefined };
-    }
-  ): Command => {
+  const transform = (match: MagicRegExpMatchArray<typeof exportDefaultFunctionRE>): Command => {
     const func = (match.groups.name ?? '').trim();
 
     const options: Option[] = [];
