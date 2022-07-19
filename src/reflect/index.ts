@@ -76,7 +76,13 @@ const exportFunctionRE = createRegExp(
 
 export function reflect(script: string) {
   const content = readFileSync(script, 'utf-8');
-  return getExportFunction(content);
+  const commands = getExportFunction(content);
+  commands.sort((lhs, rhs) => {
+    if (lhs.default) return -1;
+    if (rhs.default) return 1;
+    return lhs.name.localeCompare(rhs.name);
+  });
+  return commands;
 }
 
 function getExportFunction(content: string): Command[] {
