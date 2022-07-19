@@ -2,7 +2,14 @@
 
 [![version](https://img.shields.io/npm/v/optc?color=rgb%2850%2C203%2C86%29&label=Optc)](https://www.npmjs.com/package/optc) [![CI](https://github.com/yjl9903/Optc/actions/workflows/ci.yml/badge.svg)](https://github.com/yjl9903/Optc/actions/workflows/ci.yml)
 
-An easy way to write TypeScript cli script application.
+An easy way to write a single-file TypeScript command line application.
+
+## Features
+
++ Based on TypeScript
++ Automatically register sub commands
++ Automatically call the corresponding method and pass arguments
++ Generate help message
 
 ## Installation
 
@@ -39,6 +46,24 @@ optc examples/echo.ts word
 optc examples/echo.ts --version
 # echo/0.0.0 win32-x64 node-v16.14.2
 
+optc examples/echo.ts --help
+# echo/0.0.0
+# 
+# Usage:
+#   $ echo <text>
+# 
+# Commands:
+#   <text>        
+#   greet [name]  
+# 
+# For more info, run any command with the `--help` flag:
+#   $ echo --help
+#   $ echo greet --help
+# 
+# Options:
+#   -v, --version  Display version number 
+#   -h, --help     Display this message
+
 # or use it directly
 ./examples/echo.ts greet Optc
 # Hello, Optc
@@ -58,7 +83,7 @@ Optc has some builtin functions based on some famous libs.
 
 ### Limitation
 
-Optc extracts type infomation with regular expressions, so you **can not** do some type magic (union type, generic type and so on) on the types of paramters.
+Optc extracts type infomation with [regular expressions](https://github.com/yjl9903/Optc/blob/66fd572fc1e7fede1e341d44e7b39fdaf1a45dab/src/reflect/index.ts#L43-L75), so you **can not** do some type magic (union type, generic type and so on) on the types of paramters.
 
 ## Inspiration
 
