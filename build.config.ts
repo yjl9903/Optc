@@ -1,7 +1,7 @@
 import path from 'node:path';
 import { defineBuildConfig } from 'unbuild';
 
-// import { MagicRegExpTransformPlugin } from 'magic-regexp/transform';
+import { MagicRegExpTransformPlugin } from 'magic-regexp/transform';
 
 export default defineBuildConfig({
   entries: ['src/cli', 'src/index'],
@@ -16,7 +16,7 @@ export default defineBuildConfig({
   externals: [path.join(__dirname, './package.json')],
   hooks: {
     'rollup:options': (_options, config) => {
-      // config.plugins!.push(MagicRegExpTransformPlugin.rollup());
+      config.plugins!.push(MagicRegExpTransformPlugin.rollup());
     }
   }
 });
