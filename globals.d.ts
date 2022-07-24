@@ -1,6 +1,6 @@
-import * as path from 'path';
-import * as fs from 'fs-extra';
-import axios from 'axios';
+import * as _path from 'path';
+import * as _fs from 'fs-extra';
+import _axios from 'axios';
 import { globby } from 'globby';
 
 import type { ProcessResult } from './dist';
@@ -11,59 +11,59 @@ declare global {
    *
    * @param dir
    */
-  declare function cd(dir: string): void;
+  export function cd(dir: string): void;
 
   /**
    * Print working directory
    *
    * @returns working directory
    */
-  declare function pwd(): string;
+  export function pwd(): string;
 
   /**
    * List files
    */
-  declare function ls(dir?: string): string[];
+  export function ls(dir?: string): string[];
 
   /**
    * Exec command
    */
-  declare const $: Dollar;
+  export const $: Dollar;
 
   /**
    * path
    */
-  declare const path: typeof path;
+  export const path: typeof _path;
 
   /**
    * fs-extra
    */
-  declare const fs: typeof fs;
+  export const fs: typeof _fs;
 
   /**
    * globby
    */
-  declare const glob: typeof globby;
+  export const glob: typeof globby;
 
   /**
    * axios
    */
-  declare const http: typeof axios;
+  export const http: typeof _axios;
 
-  declare const readTextFile: (filename: string) => string;
-  declare const writeTextFile: (filename: string, content: string) => void;
+  export const readTextFile: (filename: string) => string;
+  export const writeTextFile: (filename: string, content: string) => void;
 
-  declare const copy: typeof fs.copy;
-  declare const mkdirp: typeof fs.mkdirp;
-  declare const move: typeof fs.move;
-  declare const outputFile: typeof fs.outputFile;
-  declare const readJson: typeof fs.readJson;
-  declare const outputJson: typeof fs.outputJson;
-  declare const remove: typeof fs.remove;
-  declare const writeJson: typeof fs.writeJson;
-  declare const emptyDir: typeof fs.emptyDir;
-  declare const ensureFile: typeof fs.ensureFile;
-  declare const ensureDir: typeof fs.ensureDir;
+  export const copy: typeof fs.copy;
+  export const mkdirp: typeof fs.mkdirp;
+  export const move: typeof fs.move;
+  export const outputFile: typeof fs.outputFile;
+  export const readJson: typeof fs.readJson;
+  export const outputJson: typeof fs.outputJson;
+  export const remove: typeof fs.remove;
+  export const writeJson: typeof fs.writeJson;
+  export const emptyDir: typeof fs.emptyDir;
+  export const ensureFile: typeof fs.ensureFile;
+  export const ensureDir: typeof fs.ensureDir;
 }
 
 interface Dollar {
