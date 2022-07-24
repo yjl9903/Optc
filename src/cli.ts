@@ -1,8 +1,8 @@
 import path from 'path';
+import fs from 'fs-extra';
 import createDebug from 'debug';
 import { lightRed } from 'kolorist';
 import { fileURLToPath } from 'url';
-import { existsSync, writeFileSync } from 'fs';
 
 import { version } from '../package.json';
 
@@ -42,19 +42,23 @@ async function main(args: string[]) {
     const _filename = args[1];
     if (_filename) {
       const filename = _filename.endsWith('.ts') ? _filename : _filename + '.ts';
-      if (!existsSync(filename)) {
+      if (!fs.existsSync(filename)) {
         const globalsDts = path.join(fileURLToPath(import.meta.url), '../../globals.d.ts');
+        const pkg = fs.existsSync('package.json') ? fs.readJSONSync('package.json') : undefined;
+        const isLocal = !!pkg?.dependencies?.optc || !!pkg?.devDependencies?.optc;
         const template = [
           '#!/usr/bin/env optc',
           '',
-          `/// <reference path="${globalsDts}" />`,
+          isLocal
+            ? `/// <reference types="optc/globals" />`
+            : `/// <reference path="${globalsDts}" />`,
           '',
           'export default async function() {',
           '  ',
           '}',
           ''
         ];
-        writeFileSync(filename, template.join('\n'), 'utf-8');
+        fs.writeFileSync(filename, template.join('\n'), 'utf-8');
       } else {
         console.error(lightRed('Error ') + `${filename} exists`);
       }
