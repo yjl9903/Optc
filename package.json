@@ -55,7 +55,7 @@
     "globby": "^13.1.2",
     "jiti": "^1.14.0",
     "kolorist": "^1.5.1",
-    "magic-regexp": "^0.3.0"
+    "magic-regexp": "^0.4.0"
   },
   "devDependencies": {
     "@types/debug": "^4.1.7",
