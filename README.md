@@ -43,6 +43,9 @@ Optc will automatically generate a default command with a required paramter `tex
 optc examples/echo.ts word
 # word
 
+optc examples/echo.ts greet world
+# Hello, world
+
 optc examples/echo.ts --version
 # echo/0.0.0 win32-x64 node-v16.14.2
 
