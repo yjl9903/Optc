@@ -1,4 +1,4 @@
-import { spawn } from 'child_process';
+import { spawn } from 'node:child_process';
 
 interface ProcessOption {
   cwd?: string;
@@ -7,10 +7,50 @@ interface ProcessOption {
 }
 
 export function Process(
-  cmd: string,
+  pieces: TemplateStringsArray,
+  args: any[],
   { cwd = process.cwd(), verbose = true, shell = true }: ProcessOption = {}
 ): Promise<ProcessResult> {
+  const parseCmd = () => {
+    const escape = (arg: any) => {
+      if (typeof arg === 'string') {
+        if (arg === '' || /^[a-z0-9/_.-]+$/i.test(arg)) {
+          return arg;
+        } else {
+          return `'${arg
+            .replace(/\\/g, '\\\\')
+            .replace(/'/g, "\\'")
+            .replace(/\f/g, '\\f')
+            .replace(/\n/g, '\\n')
+            .replace(/\r/g, '\\r')
+            .replace(/\t/g, '\\t')
+            .replace(/\v/g, '\\v')
+            .replace(/\0/g, '\\0')}'`;
+        }
+      } else if (arg instanceof ProcessResult) {
+        throw new Error('Unimplement');
+      } else {
+        throw new Error('Unreachable');
+      }
+    };
+
+    const cmd = [pieces[0]];
+    let i = 0;
+    while (i < args.length) {
+      if (Array.isArray(args[i])) {
+        cmd.push(args.map(escape).join(' '));
+      } else {
+        cmd.push(escape(args[i]));
+      }
+      cmd.push(pieces[++i]);
+    }
+
+    return cmd.join('');
+  };
+
   return new Promise((res) => {
+    const cmd = parseCmd();
+
     setTimeout(() => {
       if (verbose) {
         console.log(`$ ${cmd}`);
