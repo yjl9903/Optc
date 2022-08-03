@@ -65,9 +65,11 @@ async function main(args: string[]) {
 
       const editor = process.env.EDITOR;
       if (editor === 'code') {
-        await Process(`${editor} --goto ${filename}:6:3`, { verbose: false });
+        const cmd = `${editor} --goto ${filename}:6:3`;
+        await Process([cmd], [], { verbose: false });
       } else if (editor) {
-        await Process(`${editor} ${filename}`, { verbose: false });
+        const cmd = `${editor} ${filename}`;
+        await Process([cmd], [], { verbose: false });
       }
     }
     return;

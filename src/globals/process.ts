@@ -7,7 +7,7 @@ interface ProcessOption {
 }
 
 export function Process(
-  pieces: TemplateStringsArray,
+  pieces: TemplateStringsArray | string[],
   args: any[],
   { cwd = process.cwd(), verbose = true, shell = true }: ProcessOption = {}
 ): Promise<ProcessResult> {
