@@ -70,6 +70,6 @@
   },
   "packageManager": "pnpm@7.9.0",
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=v16.17.0"
   }
 }
