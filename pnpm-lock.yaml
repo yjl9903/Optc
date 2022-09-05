@@ -19,7 +19,7 @@ importers:
       prettier: ^2.7.1
       typescript: ^4.8.2
       unbuild: ^0.8.10
-      vite: ^3.0.9
+      vite: ^3.1.0
       vitest: ^0.23.1
     dependencies:
       axios: 0.27.2_debug@4.3.4
@@ -29,7 +29,7 @@ importers:
       globby: 13.1.2
       jiti: 1.14.0
       kolorist: 1.5.1
-      magic-regexp: 0.4.0_vite@3.0.9
+      magic-regexp: 0.4.0_vite@3.1.0
     devDependencies:
       '@types/debug': 4.1.7
       '@types/fs-extra': 9.0.13
@@ -38,7 +38,7 @@ importers:
       prettier: 2.7.1
       typescript: 4.8.2
       unbuild: 0.8.10
-      vite: 3.0.9
+      vite: 3.1.0
       vitest: 0.23.1
 
 packages:
@@ -254,7 +254,6 @@ packages:
     cpu: [loong64]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /@jridgewell/gen-mapping/0.3.2:
@@ -687,6 +686,7 @@ packages:
     cpu: [x64]
     os: [android]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-android-64/0.15.6:
@@ -695,7 +695,6 @@ packages:
     cpu: [x64]
     os: [android]
     requiresBuild: true
-    dev: true
     optional: true
 
   /esbuild-android-arm64/0.14.49:
@@ -704,6 +703,7 @@ packages:
     cpu: [arm64]
     os: [android]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-android-arm64/0.15.6:
@@ -712,7 +712,6 @@ packages:
     cpu: [arm64]
     os: [android]
     requiresBuild: true
-    dev: true
     optional: true
 
   /esbuild-darwin-64/0.14.49:
@@ -721,6 +720,7 @@ packages:
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-darwin-64/0.15.6:
@@ -729,7 +729,6 @@ packages:
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
-    dev: true
     optional: true
 
   /esbuild-darwin-arm64/0.14.49:
@@ -738,6 +737,7 @@ packages:
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-darwin-arm64/0.15.6:
@@ -746,7 +746,6 @@ packages:
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
-    dev: true
     optional: true
 
   /esbuild-freebsd-64/0.14.49:
@@ -755,6 +754,7 @@ packages:
     cpu: [x64]
     os: [freebsd]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-freebsd-64/0.15.6:
@@ -763,7 +763,6 @@ packages:
     cpu: [x64]
     os: [freebsd]
     requiresBuild: true
-    dev: true
     optional: true
 
   /esbuild-freebsd-arm64/0.14.49:
@@ -772,6 +771,7 @@ packages:
     cpu: [arm64]
     os: [freebsd]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-freebsd-arm64/0.15.6:
@@ -780,7 +780,6 @@ packages:
     cpu: [arm64]
     os: [freebsd]
     requiresBuild: true
-    dev: true
     optional: true
 
   /esbuild-linux-32/0.14.49:
@@ -789,6 +788,7 @@ packages:
     cpu: [ia32]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-linux-32/0.15.6:
@@ -797,7 +797,6 @@ packages:
     cpu: [ia32]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /esbuild-linux-64/0.14.49:
@@ -806,6 +805,7 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-linux-64/0.15.6:
@@ -814,7 +814,6 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /esbuild-linux-arm/0.14.49:
@@ -823,6 +822,7 @@ packages:
     cpu: [arm]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-linux-arm/0.15.6:
@@ -831,7 +831,6 @@ packages:
     cpu: [arm]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /esbuild-linux-arm64/0.14.49:
@@ -840,6 +839,7 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-linux-arm64/0.15.6:
@@ -848,7 +848,6 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /esbuild-linux-mips64le/0.14.49:
@@ -857,6 +856,7 @@ packages:
     cpu: [mips64el]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-linux-mips64le/0.15.6:
@@ -865,7 +865,6 @@ packages:
     cpu: [mips64el]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /esbuild-linux-ppc64le/0.14.49:
@@ -874,6 +873,7 @@ packages:
     cpu: [ppc64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-linux-ppc64le/0.15.6:
@@ -882,7 +882,6 @@ packages:
     cpu: [ppc64]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /esbuild-linux-riscv64/0.14.49:
@@ -891,6 +890,7 @@ packages:
     cpu: [riscv64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-linux-riscv64/0.15.6:
@@ -899,7 +899,6 @@ packages:
     cpu: [riscv64]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /esbuild-linux-s390x/0.14.49:
@@ -908,6 +907,7 @@ packages:
     cpu: [s390x]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-linux-s390x/0.15.6:
@@ -916,7 +916,6 @@ packages:
     cpu: [s390x]
     os: [linux]
     requiresBuild: true
-    dev: true
     optional: true
 
   /esbuild-netbsd-64/0.14.49:
@@ -925,6 +924,7 @@ packages:
     cpu: [x64]
     os: [netbsd]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-netbsd-64/0.15.6:
@@ -933,7 +933,6 @@ packages:
     cpu: [x64]
     os: [netbsd]
     requiresBuild: true
-    dev: true
     optional: true
 
   /esbuild-openbsd-64/0.14.49:
@@ -942,6 +941,7 @@ packages:
     cpu: [x64]
     os: [openbsd]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-openbsd-64/0.15.6:
@@ -950,7 +950,6 @@ packages:
     cpu: [x64]
     os: [openbsd]
     requiresBuild: true
-    dev: true
     optional: true
 
   /esbuild-sunos-64/0.14.49:
@@ -959,6 +958,7 @@ packages:
     cpu: [x64]
     os: [sunos]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-sunos-64/0.15.6:
@@ -967,7 +967,6 @@ packages:
     cpu: [x64]
     os: [sunos]
     requiresBuild: true
-    dev: true
     optional: true
 
   /esbuild-windows-32/0.14.49:
@@ -976,6 +975,7 @@ packages:
     cpu: [ia32]
     os: [win32]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-windows-32/0.15.6:
@@ -984,7 +984,6 @@ packages:
     cpu: [ia32]
     os: [win32]
     requiresBuild: true
-    dev: true
     optional: true
 
   /esbuild-windows-64/0.14.49:
@@ -993,6 +992,7 @@ packages:
     cpu: [x64]
     os: [win32]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-windows-64/0.15.6:
@@ -1001,7 +1001,6 @@ packages:
     cpu: [x64]
     os: [win32]
     requiresBuild: true
-    dev: true
     optional: true
 
   /esbuild-windows-arm64/0.14.49:
@@ -1010,6 +1009,7 @@ packages:
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-windows-arm64/0.15.6:
@@ -1018,7 +1018,6 @@ packages:
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
-    dev: true
     optional: true
 
   /esbuild/0.14.49:
@@ -1047,6 +1046,7 @@ packages:
       esbuild-windows-32: 0.14.49
       esbuild-windows-64: 0.14.49
       esbuild-windows-arm64: 0.14.49
+    dev: true
 
   /esbuild/0.15.6:
     resolution: {integrity: sha512-sgLOv3l4xklvXzzczhRwKRotyrfyZ2i1fCS6PTOLPd9wevDPArGU8HFtHrHCOcsMwTjLjzGm15gvC8uxVzQf+w==}
@@ -1075,7 +1075,6 @@ packages:
       esbuild-windows-32: 0.15.6
       esbuild-windows-64: 0.15.6
       esbuild-windows-arm64: 0.15.6
-    dev: true
 
   /escalade/3.1.1:
     resolution: {integrity: sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw==}
@@ -1367,7 +1366,7 @@ packages:
       yallist: 4.0.0
     dev: true
 
-  /magic-regexp/0.4.0_vite@3.0.9:
+  /magic-regexp/0.4.0_vite@3.1.0:
     resolution: {integrity: sha512-cZfSZrV3GBGRhV+T6sUQCyhyu2VCu9NO/B70XzuCSZj/X5butfVMwM1K2Lh8IfIXSOHO1IRJuj9wxPe3/mV60A==}
     dependencies:
       estree-walker: 3.0.1
@@ -1375,7 +1374,7 @@ packages:
       magic-string: 0.26.2
       mlly: 0.5.5
       ufo: 0.8.5
-      unplugin: 0.7.2_vite@3.0.9
+      unplugin: 0.7.2_vite@3.1.0
     transitivePeerDependencies:
       - esbuild
       - rollup
@@ -1651,8 +1650,8 @@ packages:
       - supports-color
     dev: true
 
-  /rollup/2.77.2:
-    resolution: {integrity: sha512-m/4YzYgLcpMQbxX3NmAqDvwLATZzxt8bIegO78FZLl+lAgKJBd1DRAOeEiZcKOIOPjxE6ewHWHNgGEalFXuz1g==}
+  /rollup/2.78.1:
+    resolution: {integrity: sha512-VeeCgtGi4P+o9hIg+xz4qQpRl6R401LWEXBmxYKOV4zlF82lyhgh2hTZnheFUbANE8l2A41F458iwj2vEYaXJg==}
     engines: {node: '>=10.0.0'}
     hasBin: true
     optionalDependencies:
@@ -1826,7 +1825,7 @@ packages:
     resolution: {integrity: sha512-hAZsKq7Yy11Zu1DE0OzWjw7nnLZmJZYTDZZyEFHZdUhV8FkH5MCfoU1XMaxXovpyW5nq5scPqq0ZDP9Zyl04oQ==}
     engines: {node: '>= 10.0.0'}
 
-  /unplugin/0.7.2_vite@3.0.9:
+  /unplugin/0.7.2_vite@3.1.0:
     resolution: {integrity: sha512-m7thX4jP8l5sETpLdUASoDOGOcHaOVtgNyrYlToyQUvILUtEzEnngRBrHnAX3IKqooJVmXpoa/CwQ/QqzvGaHQ==}
     peerDependencies:
       esbuild: '>=0.13'
@@ -1845,7 +1844,7 @@ packages:
     dependencies:
       acorn: 8.8.0
       chokidar: 3.5.3
-      vite: 3.0.9
+      vite: 3.1.0
       webpack-sources: 3.2.3
       webpack-virtual-modules: 0.4.4
     dev: false
@@ -1861,8 +1860,8 @@ packages:
       - supports-color
     dev: true
 
-  /vite/3.0.9:
-    resolution: {integrity: sha512-waYABTM+G6DBTCpYAxvevpG50UOlZuynR0ckTK5PawNVt7ebX6X7wNXHaGIO6wYYFXSM7/WcuFuO2QzhBB6aMw==}
+  /vite/3.1.0:
+    resolution: {integrity: sha512-YBg3dUicDpDWFCGttmvMbVyS9ydjntwEjwXRj2KBFwSB8SxmGcudo1yb8FW5+M/G86aS8x828ujnzUVdsLjs9g==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
@@ -1880,10 +1879,10 @@ packages:
       terser:
         optional: true
     dependencies:
-      esbuild: 0.14.49
+      esbuild: 0.15.6
       postcss: 8.4.16
       resolve: 1.22.1
-      rollup: 2.77.2
+      rollup: 2.78.1
     optionalDependencies:
       fsevents: 2.3.2
 
@@ -1919,7 +1918,7 @@ packages:
       tinybench: 2.1.4
       tinypool: 0.2.4
       tinyspy: 1.0.2
-      vite: 3.0.9
+      vite: 3.1.0
     transitivePeerDependencies:
       - less
       - sass
