@@ -9,7 +9,7 @@ importers:
       '@types/node': ^18.6.1
       axios: ^0.27.2
       bumpp: ^8.2.1
-      cac: ^6.7.12
+      cac: ^6.7.14
       debug: ^4.3.4
       fs-extra: ^10.1.0
       globby: ^13.1.2
@@ -23,7 +23,7 @@ importers:
       vitest: ^0.23.4
     dependencies:
       axios: 0.27.2_debug@4.3.4
-      cac: 6.7.12
+      cac: 6.7.14
       debug: 4.3.4
       fs-extra: 10.1.0
       globby: 13.1.2
@@ -525,15 +525,15 @@ packages:
     hasBin: true
     dependencies:
       '@jsdevtools/ez-spawn': 3.0.4
-      cac: 6.7.12
+      cac: 6.7.14
       fast-glob: 3.2.11
       kleur: 4.1.4
       prompts: 2.4.2
       semver: 7.3.5
     dev: true
 
-  /cac/6.7.12:
-    resolution: {integrity: sha512-rM7E2ygtMkJqD9c7WnFU6fruFcN3xe4FM5yUmgxhZzIKJk4uHl9U/fhwdajGFQbQuv43FAUo1Fe8gX/oIKDeSA==}
+  /cac/6.7.14:
+    resolution: {integrity: sha512-b6Ilus+c3RrdDk+JhLKUAQfzzgLEPy6wcXqS7f/xe1EETvsDP6GORG7SFuOs6cID5YkqchW/LXZbX5bc8j7ZcQ==}
     engines: {node: '>=8'}
 
   /call-me-maybe/1.0.1:
