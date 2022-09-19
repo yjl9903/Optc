@@ -13,7 +13,7 @@ importers:
       debug: ^4.3.4
       fs-extra: ^10.1.0
       globby: ^13.1.2
-      jiti: ^1.15.0
+      jiti: ^1.16.0
       kolorist: ^1.6.0
       magic-regexp: ^0.4.1
       prettier: ^2.7.1
@@ -27,7 +27,7 @@ importers:
       debug: 4.3.4
       fs-extra: 10.1.0
       globby: 13.1.2
-      jiti: 1.15.0
+      jiti: 1.16.0
       kolorist: 1.6.0
       magic-regexp: 0.4.1_vite@3.1.2
     devDependencies:
@@ -1295,8 +1295,8 @@ packages:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
     dev: true
 
-  /jiti/1.15.0:
-    resolution: {integrity: sha512-cClBkETOCVIpPMjX3ULlivuBvmt8l2Xtz+SHrULO06OqdtV0QFR2cuhc4FJnXByjUUX4CY0pl1nph0aFh9D3yA==}
+  /jiti/1.16.0:
+    resolution: {integrity: sha512-L3BJStEf5NAqNuzrpfbN71dp43mYIcBUlCRea/vdyv5dW/AYa1d4bpelko4SHdY3I6eN9Wzyasxirj1/vv5kmg==}
     hasBin: true
 
   /joycon/3.1.1:
@@ -1437,7 +1437,7 @@ packages:
       esbuild: 0.14.49
       fs-extra: 10.1.0
       globby: 11.1.0
-      jiti: 1.15.0
+      jiti: 1.16.0
       mri: 1.2.0
       pathe: 0.2.0
       typescript: 4.8.3
@@ -1759,7 +1759,7 @@ packages:
       esbuild: 0.15.6
       globby: 13.1.2
       hookable: 5.2.2
-      jiti: 1.15.0
+      jiti: 1.16.0
       magic-string: 0.26.3
       mkdirp: 1.0.4
       mkdist: 0.3.13_typescript@4.8.3
