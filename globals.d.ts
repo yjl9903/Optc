@@ -1,4 +1,6 @@
-import * as _path from 'path';
+/// <reference types="@types/node" />
+
+import * as _path from 'node:path';
 import * as _fs from 'fs-extra';
 import _axios from 'axios';
 import { globby } from 'globby';
