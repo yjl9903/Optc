@@ -58,7 +58,13 @@ class Optc {
     for (const command of commands) {
       const name = [
         command.name,
-        ...command.arguments.map((arg) => (arg.required ? `<${arg.name}>` : `[${arg.name}]`))
+        ...command.arguments.map((arg) =>
+          arg.type === ValueType.Array
+            ? `[...${arg.name}]`
+            : arg.required
+            ? `<${arg.name}>`
+            : `[${arg.name}]`
+        )
       ];
       if (command.default) {
         name.splice(0, 1);

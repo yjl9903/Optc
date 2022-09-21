@@ -2,7 +2,9 @@
 
 /// <reference type="../globals">
 
-export default async function (name: string) {
-  await $`echo "Run task:" ${name}`;
-  await $`pnpm run ${name}`;
+export default async function (names: string[]) {
+  for (const name of names) {
+    await $`echo "Run task:" ${name}`;
+    await $`pnpm run ${name}`;
+  }
 }

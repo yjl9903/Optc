@@ -202,6 +202,7 @@ if (import.meta.vitest) {
   it('parse export function', () => {
     const fns = [
       'export function hello(root?: string, text: string) {}',
+      'export function echo(messages: string[]) {}',
       'export default function (text: string) {}'
     ];
 
@@ -229,6 +230,24 @@ if (import.meta.vitest) {
     `);
 
     expect(getExportFunction(fns[1])).toMatchInlineSnapshot(`
+      [
+        {
+          "arguments": [
+            {
+              "name": "messages",
+              "required": true,
+              "type": "string[]",
+            },
+          ],
+          "default": false,
+          "description": "",
+          "name": "echo",
+          "options": [],
+        },
+      ]
+    `);
+
+    expect(getExportFunction(fns[2])).toMatchInlineSnapshot(`
       [
         {
           "arguments": [
@@ -283,6 +302,19 @@ if (import.meta.vitest) {
           "default": false,
           "description": "",
           "name": "hello",
+          "options": [],
+        },
+        {
+          "arguments": [
+            {
+              "name": "messages",
+              "required": true,
+              "type": "string[]",
+            },
+          ],
+          "default": false,
+          "description": "",
+          "name": "echo",
           "options": [],
         },
         {
