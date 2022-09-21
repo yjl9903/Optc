@@ -26,51 +26,12 @@ async function main(args: string[]) {
     console.log(`${name}/${version} ${platformInfo}`);
     return;
   } else if (first === '-h' || first === '--help') {
-    console.log(`${name}/${version}`);
-    console.log();
-    console.log('Usage:');
-    console.log('  $ optc <script> [...args]');
-    console.log();
-    console.log('Commands:');
-    console.log('  new <script>  Create a new empty script');
-    console.log();
-    console.log('Options:');
-    console.log('  -v, --version           Display version number');
-    console.log('  -h, --help              Display this message');
+    printHelp();
     return;
   } else if (first === 'new') {
-    const _filename = args[1];
-    if (_filename) {
-      const filename = _filename.endsWith('.ts') ? _filename : _filename + '.ts';
-      if (!fs.existsSync(filename)) {
-        const globalsDts = path.join(fileURLToPath(import.meta.url), '../../globals.d.ts');
-        const pkg = fs.existsSync('package.json') ? fs.readJSONSync('package.json') : undefined;
-        const isLocal = !!pkg?.dependencies?.optc || !!pkg?.devDependencies?.optc;
-        const template = [
-          '#!/usr/bin/env optc',
-          '',
-          isLocal
-            ? `/// <reference types="optc/globals" />`
-            : `/// <reference path="${globalsDts}" />`,
-          '',
-          'export default async function() {',
-          '  ',
-          '}',
-          ''
-        ];
-        fs.writeFileSync(filename, template.join('\n'), 'utf-8');
-      } else {
-        console.error(lightRed('Error ') + `${filename} exists`);
-      }
-
-      const editor = process.env.EDITOR;
-      if (editor === 'code') {
-        const cmd = `${editor} --goto ${filename}:6:3`;
-        await Process([cmd], [], { verbose: false });
-      } else if (editor) {
-        const cmd = `${editor} ${filename}`;
-        await Process([cmd], [], { verbose: false });
-      }
+    const filename = args[1];
+    if (filename) {
+      createNewScript(filename);
     }
     return;
   }
@@ -93,6 +54,51 @@ async function main(args: string[]) {
   } catch (error: unknown) {
     handle(error);
     process.exit(1);
+  }
+}
+
+function printHelp() {
+  console.log(`${name}/${version}`);
+  console.log();
+  console.log('Usage:');
+  console.log('  $ optc <script> [...args]');
+  console.log();
+  console.log('Commands:');
+  console.log('  new <script>  Create a new empty script');
+  console.log();
+  console.log('Options:');
+  console.log('  -v, --version           Display version number');
+  console.log('  -h, --help              Display this message');
+}
+
+async function createNewScript(_filename: string) {
+  const filename = _filename.endsWith('.ts') ? _filename : _filename + '.ts';
+  if (!fs.existsSync(filename)) {
+    const globalsDts = path.join(fileURLToPath(import.meta.url), '../../globals.d.ts');
+    const pkg = fs.existsSync('package.json') ? fs.readJSONSync('package.json') : undefined;
+    const isLocal = !!pkg?.dependencies?.optc || !!pkg?.devDependencies?.optc;
+    const template = [
+      '#!/usr/bin/env optc',
+      '',
+      isLocal ? `/// <reference types="optc/globals" />` : `/// <reference path="${globalsDts}" />`,
+      '',
+      'export default async function() {',
+      '  ',
+      '}',
+      ''
+    ];
+    fs.writeFileSync(filename, template.join('\n'), 'utf-8');
+  } else {
+    console.error(lightRed('Error ') + `${filename} exists`);
+  }
+
+  const editor = process.env.EDITOR;
+  if (editor === 'code') {
+    const cmd = `${editor} --goto ${filename}:6:3`;
+    await Process([cmd], [], { verbose: false });
+  } else if (editor) {
+    const cmd = `${editor} ${filename}`;
+    await Process([cmd], [], { verbose: false });
   }
 }
 
