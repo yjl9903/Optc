@@ -1,6 +1,6 @@
 {
   "name": "optc",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "description": "An easy way to write TypeScript cli script application.",
   "keywords": [
     "cli"
