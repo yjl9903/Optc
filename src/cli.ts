@@ -71,6 +71,7 @@ function printHelp() {
   console.log();
   console.log('Commands:');
   console.log('  new <script>  Create a new empty script');
+  console.log('  space         Print Optc space directory');
   console.log();
   console.log('Options:');
   console.log('  -v, --version           Display version number');
