@@ -7,7 +7,7 @@ import { OPTC_ROOT } from './constant';
 import { registerGlobal } from './globals';
 import { reflect, ValueType } from './reflect';
 
-export async function bootstrap(script: string, ...args: string[]) {
+export async function bootstrap<T = any>(script: string, ...args: string[]): Promise<T> {
   const jiti = (await import('jiti')).default(import.meta.url, {
     cache: true,
     sourceMaps: false
@@ -24,8 +24,7 @@ export async function bootstrap(script: string, ...args: string[]) {
   const module = await jiti(path.resolve(process.cwd(), script));
 
   const cli = new Optc(script, module);
-  await registerGlobal();
-  await cli.run(args);
+  return await cli.run<T>(args);
 }
 
 class Optc {
@@ -97,8 +96,9 @@ class Optc {
     }
   }
 
-  async run(args: string[]) {
+  async run<T = any>(args: string[]): Promise<T> {
+    await registerGlobal();
     this.cac.parse(['node', this.scriptPath, ...args], { run: false });
-    await this.cac.runMatchedCommand();
+    return await this.cac.runMatchedCommand();
   }
 }

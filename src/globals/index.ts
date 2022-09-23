@@ -5,9 +5,10 @@ import axios from 'axios';
 import fs from 'fs-extra';
 import { globby } from 'globby';
 
+import { loadPreset } from './preset';
 import { $, cd, pwd, ls, readTextFile, writeTextFile, sleep } from './globals';
 
-export async function registerGlobal() {
+export async function registerGlobal(preset?: string) {
   global.$ = $;
   global.cd = cd;
   global.pwd = pwd;
@@ -35,4 +36,6 @@ export async function registerGlobal() {
   ]) {
     global[key] = fs[key];
   }
+
+  await loadPreset(preset);
 }
