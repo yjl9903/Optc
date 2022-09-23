@@ -1,5 +1,5 @@
-import * as fs from 'fs-extra';
-import * as path from 'node:path';
+import fs from 'fs-extra';
+import path from 'node:path';
 
 import { OPTC_ROOT } from '../constant';
 
