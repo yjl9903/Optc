@@ -1,9 +1,9 @@
-import os from 'os';
 import path from 'path';
 import fs from 'fs-extra';
 import { CAC, cac } from 'cac';
 
 import { logWarn } from './utils';
+import { OPTC_ROOT } from './constant';
 import { registerGlobal } from './globals';
 import { reflect, ValueType } from './reflect';
 
@@ -14,7 +14,7 @@ export async function bootstrap(script: string, ...args: string[]) {
   });
 
   if (!script.endsWith('.ts') && !path.basename(script).includes('.')) {
-    const tempDir = path.join(os.homedir(), '.optc/temp');
+    const tempDir = path.join(OPTC_ROOT, '.cache');
     await fs.ensureDir(tempDir);
     const content = await fs.readFile(script, 'utf-8');
     script = path.join(tempDir, path.basename(script) + '.ts');

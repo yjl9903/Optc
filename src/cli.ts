@@ -1,13 +1,15 @@
-import path from 'path';
 import fs from 'fs-extra';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
 import createDebug from 'debug';
 import { lightRed } from 'kolorist';
-import { fileURLToPath } from 'url';
 
 import { version } from '../package.json';
 
-import { bootstrap } from './core';
 import { Process } from './globals/process';
+import { bootstrap } from './core';
+import { OPTC_ROOT } from './constant';
 
 const name = 'optc';
 
@@ -33,6 +35,10 @@ async function main(args: string[]) {
     if (filename) {
       createNewScript(filename);
     }
+    return;
+  } else if (first === 'space') {
+    fs.ensureDirSync(OPTC_ROOT);
+    console.log(OPTC_ROOT);
     return;
   }
 
