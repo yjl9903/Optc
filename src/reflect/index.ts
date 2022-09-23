@@ -84,7 +84,9 @@ export function reflect(script: string) {
 }
 
 function getExportFunction(content: string): Command[] {
-  const transform = (match: MagicRegExpMatchArray<typeof exportDefaultFunctionRE>): Command => {
+  const transform = (
+    match: MagicRegExpMatchArray<typeof exportDefaultFunctionRE | typeof exportFunctionRE>
+  ): Command => {
     const func = (match.groups.name ?? '').trim();
 
     const options: Option[] = [];
