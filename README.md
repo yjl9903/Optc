@@ -4,13 +4,6 @@
 
 An easy way to write a single-file TypeScript command line application.
 
-## Features
-
-+ Based on TypeScript
-+ Automatically register sub commands
-+ Automatically call the corresponding method and pass arguments
-+ Generate help message
-
 ## Installation
 
 ```bash
@@ -37,7 +30,7 @@ export function greet(name?: string) {
 }
 ```
 
-Optc will automatically generate a default command with a required paramter `text` and a subcommand `greet` with an optional paramter `name`.
+When running the above CLI script, Optc will automatically generate a default command with a required paramter `text`, and a subcommand `greet` with an optional paramter `name`.
 
 ```bash
 optc examples/echo.ts word
@@ -67,14 +60,14 @@ optc examples/echo.ts --help
 #   -v, --version  Display version number 
 #   -h, --help     Display this message
 
-# or use it directly
+# or use it directly, make sure you grant the executable permissions
 ./examples/echo.ts greet Optc
 # Hello, Optc
 ```
 
 You can see more examples in the [./examples](./examples).
 
-### Functions
+### Libraries
 
 Optc has some builtin functions based on some famous libs.
 
@@ -85,6 +78,21 @@ Optc has some builtin functions based on some famous libs.
 + `fs`: [fs-extra](https://www.npmjs.com/package/fs-extra)
 + `glob`: [globby](https://www.npmjs.com/package/globby)
 + `http`: [axios](https://www.npmjs.com/package/axios)
+
+### Custom Libraries
+
+You can init a node module at `~/.optc/`, and create `~/.optc/dep.ts` to import all your custom libraries, functions and so on to your script execution environment.
+
+```ts
+// ~/.optc/dep.ts
+
+// Make sure that you have install "kolorist" in `~/.optc/`
+import kolorist from 'kolorist'
+
+export default function(global: any) {
+  global.color = kolorist
+}
+```
 
 ### Limitation
 
