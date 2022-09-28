@@ -3,7 +3,7 @@ import fs from 'fs-extra';
 import { CAC, cac } from 'cac';
 
 import { logWarn } from './utils';
-import { OPTC_ROOT } from './constant';
+import { OPTC_ROOT } from './space';
 import { registerGlobal } from './globals';
 import { reflect, ValueType } from './reflect';
 

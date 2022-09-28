@@ -9,7 +9,7 @@ import { version } from '../package.json';
 
 import { Process } from './globals/process';
 import { bootstrap } from './core';
-import { OPTC_ROOT } from './constant';
+import { ensureSpace, OPTC_ROOT } from './space';
 
 const name = 'optc';
 
@@ -56,6 +56,7 @@ async function main(args: string[]) {
   });
 
   try {
+    await ensureSpace();
     await bootstrap(args[0], ...args.slice(1));
   } catch (error: unknown) {
     handle(error);

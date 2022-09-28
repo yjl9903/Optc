@@ -1,9 +1,9 @@
 import fs from 'fs-extra';
 import path from 'node:path';
 
-import { OPTC_ROOT } from '../constant';
+import { OPTC_ROOT } from '../space';
 
-export async function loadPreset(name: string = 'dep.ts') {
+export async function loadDep(name: string = 'dep.ts') {
   const filepath = path.join(OPTC_ROOT, name);
   if (!fs.existsSync(filepath)) return;
   const jiti = (await import('jiti')).default(filepath, { cache: true, sourceMaps: false });
