@@ -1,6 +1,6 @@
 import os from 'node:os';
 import path from 'node:path';
-import { ensureDir, existsSync, writeFile } from 'fs-extra';
+import { ensureDir, pathExists, writeFile } from 'fs-extra';
 
 export const OPTC_ROOT = process.env.OPTC_ROOT
   ? path.resolve(process.env.OPTC_ROOT)
@@ -10,7 +10,7 @@ export async function ensureSpace() {
   await ensureDir(OPTC_ROOT);
   const dep = path.join(OPTC_ROOT, 'dep.ts');
   const pkg = path.join(OPTC_ROOT, 'package.json');
-  if (!existsSync(pkg)) {
+  if (!pathExists(pkg)) {
     await writeFile(
       pkg,
       JSON.stringify(
@@ -25,7 +25,7 @@ export async function ensureSpace() {
       'utf-8'
     );
   }
-  if (!existsSync(dep)) {
+  if (!pathExists(dep)) {
     const body = `export default function(global: any) {\n\n}`;
     await writeFile(dep, body, 'utf-8');
   }
