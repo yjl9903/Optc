@@ -96,7 +96,7 @@ export default function(global: any) {
 
 ### Limitation
 
-+ Optc extracts type infomation from the abstract syntax tree of the code, so you **can not** do some type magic (union type, generic type and so on) on the types of paramters.
++ Optc extracts type infomation from the abstract syntax tree of the code (based on [babel](https://babeljs.io/)), so you **can not** do some type magic (union type, generic type and so on) on the types of paramters.
 
 + Global code snippets can not have the type of global functions. Currently, it links to the local type declaration file.
 
