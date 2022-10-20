@@ -96,7 +96,7 @@ export default function(global: any) {
 
 ### Limitation
 
-+ Optc extracts type infomation with [regular expressions](https://github.com/yjl9903/Optc/blob/66fd572fc1e7fede1e341d44e7b39fdaf1a45dab/src/reflect/index.ts#L43-L75), so you **can not** do some type magic (union type, generic type and so on) on the types of paramters.
++ Optc extracts type infomation from the abstract syntax tree of the code, so you **can not** do some type magic (union type, generic type and so on) on the types of paramters.
 
 + Global code snippets can not have the type of global functions. Currently, it links to the local type declaration file.
 
