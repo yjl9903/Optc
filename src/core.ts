@@ -1,29 +1,54 @@
-import path from 'path';
 import fs from 'fs-extra';
+import path from 'path';
+import crypto from 'crypto';
 import { CAC, cac } from 'cac';
+
+// @ts-ignore
+import BabelTsPlugin from '@babel/plugin-transform-typescript';
 
 import { logWarn } from './utils';
 import { OPTC_ROOT } from './space';
 import { registerGlobal } from './globals';
-import { reflect, ValueType } from './reflect';
+import { reflect, ReflectionPlugin, ValueType } from './reflect';
 
 export async function bootstrap<T = any>(script: string, ...args: string[]): Promise<T> {
+  const scriptName = path.parse(path.basename(script)).name;
+
   const jiti = (await import('jiti')).default(import.meta.url, {
     cache: true,
-    sourceMaps: false
+    sourceMaps: false,
+    transformOptions: {
+      babel: {
+        plugins: [
+          [ReflectionPlugin, {}],
+          [BabelTsPlugin, {}]
+        ]
+      }
+    }
   });
 
-  if (!script.endsWith('.ts') && !path.basename(script).includes('.')) {
-    const tempDir = path.join(OPTC_ROOT, '.cache');
-    await fs.ensureDir(tempDir);
-    const content = await fs.readFile(script, 'utf-8');
-    script = path.join(tempDir, path.basename(script) + '.ts');
-    await fs.writeFile(script, content, 'utf-8');
+  {
+    const cacheDir = path.join(OPTC_ROOT, '.cache');
+    await fs.ensureDir(cacheDir);
+
+    const content = await fs.readFile(script);
+    const hash = crypto.createHash('sha256').update(content).digest('hex');
+
+    // This is a hack.
+    // First, jiti will auto infer whether enable babel TS plugin.
+    // Second, custom plugin will always go after TS plugin.
+    // So, I can not get TS infomation for generation.
+    // Finally, add this `.js` ext will disable babel TS plugin.
+    script = path.join(cacheDir, scriptName + '_' + hash + '.js');
+
+    if (!fs.existsSync(script)) {
+      await fs.writeFile(script, content);
+    }
   }
 
   const module = await jiti(path.resolve(process.cwd(), script));
 
-  const cli = new Optc(script, module);
+  const cli = new Optc(scriptName, script, module);
   return await cli.run<T>(args);
 }
 
@@ -34,7 +59,7 @@ class Optc {
 
   private readonly cac: CAC;
 
-  constructor(script: string, rawModule: Record<string, any>) {
+  constructor(name: string, script: string, rawModule: Record<string, any>) {
     this.scriptPath = script;
     this.rawModule = rawModule;
 
@@ -46,7 +71,7 @@ class Optc {
       return defaultValue;
     };
 
-    this.cac = cac(loadField('name', path.basename(script).replace(/\.[\s\S]+$/, '')));
+    this.cac = cac(loadField('name', name));
     this.cac.version(loadField('version', 'unknown'));
     this.cac.help();
     this.initCommands();
