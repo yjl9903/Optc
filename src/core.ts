@@ -6,79 +6,117 @@ import { CAC, cac } from 'cac';
 // @ts-ignore
 import BabelTsPlugin from '@babel/plugin-transform-typescript';
 
+import { version as OptcVersion } from '../package.json';
+
 import { logWarn } from './utils';
-import { OPTC_ROOT } from './space';
+import { CACHE_ROOT } from './space';
 import { registerGlobal } from './globals';
-import { reflect, ReflectionPlugin, ValueType } from './reflect';
+import { Command, ReflectionPlugin, ValueType } from './reflect';
 
 export async function bootstrap<T = any>(script: string, ...args: string[]): Promise<T> {
+  await fs.ensureDir(CACHE_ROOT);
+
   const scriptName = path.parse(path.basename(script)).name;
+  const content = await fs.readFile(script);
+  const hash = crypto.createHash('sha256').update(content).digest('hex');
 
-  const jiti = (await import('jiti')).default(import.meta.url, {
-    cache: true,
-    sourceMaps: false,
-    transformOptions: {
-      babel: {
-        plugins: [
-          [ReflectionPlugin, {}],
-          [BabelTsPlugin, {}]
-        ]
+  // This is a hack.
+  // First, jiti will auto infer whether enable babel TS plugin.
+  // Second, custom plugin will always go after TS plugin.
+  // So, I can not get TS infomation for generation.
+  // Finally, add this `.js` ext will disable babel TS plugin.
+  const cachedScriptPath = path.join(CACHE_ROOT, scriptName + '_' + hash + '.js');
+  const cachedReflPath = path.join(CACHE_ROOT, scriptName + '_' + hash + '.json');
+
+  const initOptc = async (): Promise<Optc> => {
+    const commands: Command[] = [];
+    const jiti = (await import('jiti')).default(import.meta.url, {
+      cache: true,
+      sourceMaps: false,
+      transformOptions: {
+        babel: {
+          plugins: [
+            [ReflectionPlugin, { commands }],
+            [BabelTsPlugin, {}]
+          ]
+        }
       }
+    });
+
+    interface CachedReflection {
+      name: string;
+      version: string;
+      commands: Command[];
+      optc: {
+        version: string;
+      };
     }
-  });
 
-  {
-    const cacheDir = path.join(OPTC_ROOT, '.cache');
-    await fs.ensureDir(cacheDir);
+    if (!fs.existsSync(cachedScriptPath) || !fs.existsSync(cachedReflPath)) {
+      await fs.writeFile(cachedScriptPath, content);
+      const module = await jiti(cachedScriptPath);
 
-    const content = await fs.readFile(script);
-    const hash = crypto.createHash('sha256').update(content).digest('hex');
+      const loadField = (field: string, defaultValue: string) => {
+        const value = module[field];
+        if (value === undefined || value === null) return defaultValue;
+        if (typeof value === 'string') return value;
+        if (typeof value === 'function') return value();
+        return defaultValue;
+      };
+      const cliName = loadField('name', scriptName);
+      const cliVersion = loadField('version', 'unknown');
 
-    // This is a hack.
-    // First, jiti will auto infer whether enable babel TS plugin.
-    // Second, custom plugin will always go after TS plugin.
-    // So, I can not get TS infomation for generation.
-    // Finally, add this `.js` ext will disable babel TS plugin.
-    script = path.join(cacheDir, scriptName + '_' + hash + '.js');
+      const refl: CachedReflection = {
+        name: cliName,
+        version: cliVersion,
+        commands,
+        optc: {
+          version: OptcVersion
+        }
+      };
+      await fs.writeFile(cachedReflPath, JSON.stringify(refl, null, 2), 'utf-8');
 
-    if (!fs.existsSync(script)) {
-      await fs.writeFile(script, content);
+      const cli = new Optc(cachedScriptPath, {
+        name: cliName,
+        version: cliVersion
+      });
+      cli.setupCommands(module, commands);
+
+      return cli;
+    } else {
+      const refl: CachedReflection = JSON.parse(await fs.readFile(cachedReflPath, 'utf-8'));
+      if (refl?.optc?.version !== OptcVersion) {
+        // Version is not matched, and disable reflection cache
+        await fs.unlink(cachedReflPath);
+        return initOptc();
+      }
+
+      const cli = new Optc(cachedScriptPath, refl);
+
+      const module = await jiti(cachedScriptPath);
+      cli.setupCommands(module, refl.commands);
+
+      return cli;
     }
-  }
+  };
 
-  const module = await jiti(path.resolve(process.cwd(), script));
-
-  const cli = new Optc(scriptName, script, module);
+  const cli = await initOptc();
   return await cli.run<T>(args);
 }
 
 class Optc {
   private readonly scriptPath: string;
 
-  private readonly rawModule: Record<string, any>;
-
   private readonly cac: CAC;
 
-  constructor(name: string, script: string, rawModule: Record<string, any>) {
-    this.scriptPath = script;
-    this.rawModule = rawModule;
-
-    const loadField = (field: string, defaultValue: string) => {
-      const value = this.rawModule[field];
-      if (value === undefined || value === null) return defaultValue;
-      if (typeof value === 'string') return value;
-      if (typeof value === 'function') return value();
-      return defaultValue;
-    };
-
-    this.cac = cac(loadField('name', name));
-    this.cac.version(loadField('version', 'unknown'));
+  constructor(scriptPath: string, option: { name: string; version: string }) {
+    this.scriptPath = scriptPath;
+    this.cac = cac(option.name);
+    this.cac.version(option.version);
     this.cac.help();
-    this.initCommands();
   }
 
-  private initCommands() {
-    const commands = reflect(this.scriptPath);
+  public setupCommands(module: Record<string, any>, commands: Command[]) {
     for (const command of commands) {
       const name = [
         command.name,
@@ -94,7 +132,7 @@ class Optc {
         name.splice(0, 1);
       }
 
-      const fn = command.default ? this.rawModule.default : this.rawModule[command.name];
+      const fn = command.default ? module.default : module[command.name];
       if (!fn || typeof fn !== 'function') {
         if (command.default) {
           logWarn(`Can not find default function`);

@@ -7,6 +7,8 @@ export const OPTC_ROOT = process.env.OPTC_ROOT
   ? path.resolve(process.env.OPTC_ROOT)
   : path.join(os.homedir(), '.optc');
 
+export const CACHE_ROOT = path.join(OPTC_ROOT, '.cache');
+
 export async function ensureSpace() {
   await fs.ensureDir(OPTC_ROOT);
   const dep = path.join(OPTC_ROOT, 'dep.ts');

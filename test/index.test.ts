@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { bootstrap } from '../src/core';
+import { bootstrap } from '../src';
 
 describe('Echo', () => {
   it('should work', () => {
