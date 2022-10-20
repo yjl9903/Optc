@@ -2,9 +2,9 @@ import type { PluginObj } from '@babel/core';
 import type {
   Comment,
   TSArrayType,
-  TSPropertySignature,
+  TSTypeElement,
   TSTypeAnnotation,
-  TSTypeElement
+  TSPropertySignature
 } from '@babel/types';
 
 import createDebug from 'debug';

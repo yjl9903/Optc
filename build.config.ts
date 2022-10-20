@@ -13,7 +13,12 @@ export default defineBuildConfig({
   replace: {
     'import.meta.vitest': 'undefined'
   },
-  externals: [path.join(__dirname, './package.json')],
+  externals: [
+    path.join(__dirname, './package.json'),
+    '@babel/core',
+    '@babel/types',
+    '@types/babel__core'
+  ],
   hooks: {
     'rollup:options': (_options, config) => {
       config.plugins!.push(MagicRegExpTransformPlugin.rollup());
