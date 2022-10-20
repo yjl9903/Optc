@@ -13,6 +13,8 @@ import {
 
 import { logWarn } from '../utils';
 
+export * from './babel';
+
 export enum ValueType {
   String = 'string',
   Number = 'number',
