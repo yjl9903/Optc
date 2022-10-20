@@ -13,7 +13,7 @@ import { registerGlobal } from './globals';
 import { importJiti, logWarn } from './utils';
 import { Command, ReflectionPlugin, ValueType } from './reflect';
 
-export async function bootstrap<T = any>(script: string, ...args: string[]): Promise<T> {
+export async function makeOptc(script: string): Promise<Optc> {
   await fs.ensureDir(CACHE_ROOT);
 
   const scriptName = path.parse(path.basename(script)).name;
@@ -100,8 +100,11 @@ export async function bootstrap<T = any>(script: string, ...args: string[]): Pro
     }
   };
 
-  const cli = await initOptc();
-  return await cli.run<T>(args);
+  return await initOptc();
+}
+
+export async function bootstrap<T = any>(script: string, ...args: string[]): Promise<T> {
+  return await (await makeOptc(script)).run<T>(args);
 }
 
 class Optc {

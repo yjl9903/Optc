@@ -43,7 +43,7 @@
     "dev": "unbuild --stub",
     "format": "prettier --write globals.d.ts src/**/*.ts test/**/*.ts examples/*.ts",
     "release": "bumpp --commit --push --tag && pnpm publish",
-    "test": "OPTC_ROOT=./test/fixtures vitest",
+    "test": "OPTC_CACHE=false OPTC_ROOT=./test/fixtures vitest",
     "typecheck": "tsc --noEmit",
     "postversion": "pnpm build"
   },
