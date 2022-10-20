@@ -2,9 +2,11 @@ import type { PluginObj } from '@babel/core';
 
 import createDebug from 'debug';
 
+import type { Command } from './types';
+
 const debug = createDebug('optc:reflection');
 
-export function ReflectionPlugin(): PluginObj {
+export function ReflectionPlugin(_ctx: any, option: { commands: Command[] }): PluginObj {
   debug('Create plugin');
   return {
     name: 'optc-reflection',
