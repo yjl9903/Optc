@@ -18,7 +18,7 @@ export * from './types';
 
 import { Command, Option, ValueType, Parameter } from './types';
 
-const exportDefaultFunctionRE = createRegExp(
+export const exportDefaultFunctionRE = createRegExp(
   exactly('export')
     .and(oneOrMore(whitespace))
     .and(exactly('default'))
@@ -34,7 +34,7 @@ const exportDefaultFunctionRE = createRegExp(
   [multiline]
 );
 
-const exportFunctionRE = createRegExp(
+export const exportFunctionRE = createRegExp(
   exactly('export')
     .and(oneOrMore(whitespace))
     .and(exactly('async').and(oneOrMore(whitespace)).optionally())
@@ -60,7 +60,7 @@ export function reflect(script: string) {
   return commands;
 }
 
-function getExportFunction(content: string): Command[] {
+export function getExportFunction(content: string): Command[] {
   const transform = (
     match: MagicRegExpMatchArray<typeof exportDefaultFunctionRE | typeof exportFunctionRE>
   ): Command => {
