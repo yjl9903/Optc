@@ -45,7 +45,7 @@
     "release": "bumpp --commit --push --tag && pnpm publish",
     "test": "OPTC_ROOT=./test/fixtures vitest",
     "typecheck": "tsc --noEmit",
-    "preversion": "pnpm build"
+    "postversion": "pnpm build"
   },
   "dependencies": {
     "@types/fs-extra": "^9.0.13",
