@@ -1,6 +1,5 @@
 import fs from 'fs-extra';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 
 import createDebug from 'debug';
 import { lightRed } from 'kolorist';
@@ -33,13 +32,18 @@ async function main(args: string[]) {
   } else if (first === 'new') {
     const filename = args[1];
     if (filename) {
+      await ensureSpace();
       createNewScript(filename);
+    } else {
+      console.error(lightRed('Error ') + 'You must provide <script>');
     }
     return;
   } else if (first === 'space') {
-    fs.ensureDirSync(OPTC_ROOT);
+    await ensureSpace();
     console.log(OPTC_ROOT);
     return;
+  } else {
+    await ensureSpace();
   }
 
   const handle = (error: unknown) => {
@@ -56,7 +60,6 @@ async function main(args: string[]) {
   });
 
   try {
-    await ensureSpace();
     await bootstrap(args[0], ...args.slice(1));
   } catch (error: unknown) {
     handle(error);
@@ -82,9 +85,10 @@ function printHelp() {
 async function createNewScript(_filename: string) {
   const filename = _filename.endsWith('.ts') ? _filename : _filename + '.ts';
   if (!fs.existsSync(filename)) {
-    const globalsDts = path.join(fileURLToPath(import.meta.url), '../../globals.d.ts');
+    const globalsDts = path.join(OPTC_ROOT, 'globals.d.ts');
     const pkg = fs.existsSync('package.json') ? fs.readJSONSync('package.json') : undefined;
     const isLocal = !!pkg?.dependencies?.optc || !!pkg?.devDependencies?.optc;
+
     const template = [
       '#!/usr/bin/env optc',
       '',
@@ -95,6 +99,7 @@ async function createNewScript(_filename: string) {
       '}',
       ''
     ];
+
     fs.writeFileSync(filename, template.join('\n'), 'utf-8');
   } else {
     console.error(lightRed('Error ') + `${filename} exists`);
