@@ -5,7 +5,7 @@ export enum ValueType {
   Array = 'string[]'
 }
 
-export interface Argument {
+export interface Parameter {
   name: string;
   type: ValueType;
   required: boolean;
@@ -22,6 +22,6 @@ export interface Command {
   name: string;
   default: boolean;
   options: Option[];
-  arguments: Argument[];
+  parameters: Parameter[];
   description: string;
 }
