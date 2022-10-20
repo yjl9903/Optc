@@ -8,7 +8,7 @@ import BabelTsPlugin from '@babel/plugin-transform-typescript';
 
 import { version as OptcVersion } from '../package.json';
 
-import { CACHE_ROOT } from './space';
+import { OPTC_CACHE, CACHE_ROOT } from './space';
 import { registerGlobal } from './globals';
 import { importJiti, logWarn } from './utils';
 import { Command, ReflectionPlugin, ValueType } from './reflect';
@@ -31,7 +31,7 @@ export async function bootstrap<T = any>(script: string, ...args: string[]): Pro
   const initOptc = async (): Promise<Optc> => {
     const commands: Command[] = [];
     const jiti = (await importJiti())(import.meta.url, {
-      cache: true,
+      cache: OPTC_CACHE,
       sourceMaps: false,
       transformOptions: {
         babel: {
@@ -52,7 +52,7 @@ export async function bootstrap<T = any>(script: string, ...args: string[]): Pro
       };
     }
 
-    if (!fs.existsSync(cachedScriptPath) || !fs.existsSync(cachedReflPath)) {
+    if (!OPTC_CACHE || !fs.existsSync(cachedScriptPath) || !fs.existsSync(cachedReflPath)) {
       await fs.writeFile(cachedScriptPath, content);
       const module = await jiti(cachedScriptPath);
 
@@ -120,7 +120,7 @@ class Optc {
     for (const command of commands) {
       const name = [
         command.name,
-        ...command.arguments.map((arg) =>
+        ...command.parameters.map((arg) =>
           arg.type === ValueType.Array
             ? `[...${arg.name}]`
             : arg.required

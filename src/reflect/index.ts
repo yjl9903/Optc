@@ -16,7 +16,7 @@ import { logWarn } from '../utils';
 export * from './babel';
 export * from './types';
 
-import { Command, Option, ValueType, Argument } from './types';
+import { Command, Option, ValueType, Parameter } from './types';
 
 const exportDefaultFunctionRE = createRegExp(
   exactly('export')
@@ -129,11 +129,11 @@ function getExportFunction(content: string): Command[] {
           };
         }
       })
-      .filter(Boolean) as Argument[];
+      .filter(Boolean) as Parameter[];
 
     return {
       name: func,
-      arguments: arg,
+      parameters: arg,
       options,
       default: false,
       description: ''

@@ -3,6 +3,8 @@ import path from 'node:path';
 import fs from 'fs-extra';
 import { fileURLToPath } from 'node:url';
 
+export const OPTC_CACHE = process.env.OPTC_CACHE === 'false' ? false : true;
+
 export const OPTC_ROOT = process.env.OPTC_ROOT
   ? path.resolve(process.env.OPTC_ROOT)
   : path.join(os.homedir(), '.optc');
