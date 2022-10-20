@@ -10,6 +10,10 @@
     {
       "matchManagers": ["github-actions"],
       "automerge": true
+    },
+    {
+      "packageNames": ["node"],
+      "enabled": false
     }
   ],
   "rangeStrategy": "bump"
