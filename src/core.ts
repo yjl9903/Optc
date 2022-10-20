@@ -8,9 +8,9 @@ import BabelTsPlugin from '@babel/plugin-transform-typescript';
 
 import { version as OptcVersion } from '../package.json';
 
-import { logWarn } from './utils';
 import { CACHE_ROOT } from './space';
 import { registerGlobal } from './globals';
+import { importJiti, logWarn } from './utils';
 import { Command, ReflectionPlugin, ValueType } from './reflect';
 
 export async function bootstrap<T = any>(script: string, ...args: string[]): Promise<T> {
@@ -30,7 +30,7 @@ export async function bootstrap<T = any>(script: string, ...args: string[]): Pro
 
   const initOptc = async (): Promise<Optc> => {
     const commands: Command[] = [];
-    const jiti = (await import('jiti')).default(import.meta.url, {
+    const jiti = (await importJiti())(import.meta.url, {
       cache: true,
       sourceMaps: false,
       transformOptions: {
