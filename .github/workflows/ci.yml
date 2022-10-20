@@ -36,10 +36,6 @@ jobs:
           pnpm link -g
           chmod +x examples/*.ts
           ./examples/dir.ts
-          ./examples/echo.ts hello
-          ./examples/http.ts http://numbersapi.com/42
-          ./examples/node.ts
-          ./examples/pkg.ts --root .
           
           if [ $(./examples/echo.ts hello) != "hello" ] ; then
             exit 1
