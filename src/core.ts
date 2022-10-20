@@ -112,6 +112,8 @@ class Optc {
 
   private readonly cac: CAC;
 
+  private commands: Command[] = [];
+
   constructor(scriptPath: string, option: { name: string; version: string }) {
     this.scriptPath = scriptPath;
     this.cac = cac(option.name);
@@ -119,7 +121,13 @@ class Optc {
     this.cac.help();
   }
 
+  public getRawCommands() {
+    return this.commands;
+  }
+
   public setupCommands(module: Record<string, any>, commands: Command[]) {
+    this.commands.push(...commands);
+
     for (const command of commands) {
       const name = [
         command.name,
