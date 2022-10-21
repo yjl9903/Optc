@@ -75,7 +75,9 @@ export function Process(
         combined += data;
       };
       const onStderr = (data: string) => {
-        if (verbose) process.stderr.write(data);
+        if (verbose) {
+          process.stderr.write(data);
+        }
         stderr += data;
         combined += data;
       };
