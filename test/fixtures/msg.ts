@@ -1,6 +1,7 @@
 #!/usr/bin/env optc
 
-export default function () {
-  // @ts-ignore
-  return msg;
+/// <reference path="../space/globals.d.ts" />
+
+export function msg() {
+  return message;
 }

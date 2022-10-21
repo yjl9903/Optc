@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { bootstrap } from '../src';
+import { bootstrap, makeOptc } from '../src';
 
 describe('Examples', () => {
   it('http', () => {
@@ -20,8 +20,10 @@ describe('Examples', () => {
   });
 });
 
-describe('Preset', () => {
+describe('Preset', async () => {
+  const cli = await makeOptc('test/fixtures/msg.ts');
+
   it('should work', async () => {
-    expect(await bootstrap('test/fixtures/msg.ts')).toMatchInlineSnapshot('"Hello, world."');
+    expect(await cli.run(['msg'])).toMatchInlineSnapshot('"Hello, world."');
   });
 });

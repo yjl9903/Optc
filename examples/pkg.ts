@@ -1,6 +1,6 @@
 #!/usr/bin/env optc
 
-/// <reference type="../globals">
+/// <reference path="../globals.d.ts" />
 
 interface Option {
   root?: string;
