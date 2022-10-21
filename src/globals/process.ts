@@ -29,9 +29,9 @@ export function Process(
             .replace(/\0/g, '\\0')}"`;
         }
       } else if (arg instanceof ProcessResult) {
-        throw new Error('Unimplement');
+        throw new Error('Optc: Unimplement branch');
       } else {
-        throw new Error('Unreachable');
+        throw new Error('Optc: Unreachable branch');
       }
     };
 
@@ -39,7 +39,7 @@ export function Process(
     let i = 0;
     while (i < args.length) {
       if (Array.isArray(args[i])) {
-        cmd.push(args.map(escape).join(' '));
+        cmd.push(args[i].map(escape).join(' '));
       } else {
         cmd.push(escape(args[i]));
       }

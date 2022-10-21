@@ -14,6 +14,10 @@ describe('Examples', () => {
   it('pkg', () => {
     expect(() => bootstrap('examples/pkg.ts', '--root', '.')).not.toThrow();
   });
+
+  it('process', async () => {
+    expect((await bootstrap('test/fixtures/process.ts', 'hello')).stdout).toEqual('hello\n');
+  });
 });
 
 describe('Preset', () => {
