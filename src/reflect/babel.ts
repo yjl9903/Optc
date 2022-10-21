@@ -176,7 +176,6 @@ function parseOptions(body: TSTypeElement[]): Option[] {
 
         // Rest argument '--'
         if (name === '--') {
-          console.log(sig);
           if (parseType(sig.typeAnnotation) !== ValueType.Array) {
             // Unsupport here
           }
