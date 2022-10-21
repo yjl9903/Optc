@@ -11,11 +11,12 @@ export function $(pieces: TemplateStringsArray, ...args: any[]) {
 }
 
 export function cd(dir: string) {
-  print(`${$.prompt} cd ${dir}`);
+  print(`cd ${dir}`, { prompt: true });
   process.chdir(dir);
 }
 
 export function pwd() {
+  print(`pwd`, { prompt: true });
   print(process.cwd());
   return process.cwd();
 }
@@ -36,8 +37,13 @@ export function sleep(ms: number): Promise<void> {
   return new Promise((res) => setTimeout(() => res(), ms));
 }
 
-function print(msg: string) {
+function print(msg: string, option?: { prompt: boolean | string }) {
   if ($.verbose) {
-    console.log(msg);
+    if (!!option?.prompt) {
+      const prompt = typeof option?.prompt === 'string' ? option.prompt : $.prompt;
+      console.log(`${prompt} ${msg}`);
+    } else {
+      console.log(msg);
+    }
   }
 }
