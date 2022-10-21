@@ -171,13 +171,25 @@ function parseOptions(body: TSTypeElement[]): Option[] {
   const sigs = body.filter((t) => t.type === 'TSPropertySignature') as TSPropertySignature[];
   return sigs
     .map((sig) => {
-      if (sig.key.type === 'Identifier') {
+      if (sig.key.type === 'Identifier' || sig.key.type === 'StringLiteral') {
+        const name = sig.key.type === 'Identifier' ? sig.key.name : sig.key.value;
+
+        // Rest argument '--'
+        if (name === '--') {
+          console.log(sig);
+          if (parseType(sig.typeAnnotation) !== ValueType.Array) {
+            // Unsupport here
+          }
+          return undefined;
+        }
+
         let type = parseType(sig.typeAnnotation);
         if (!type) {
           // Unsupport here
         }
+
         return {
-          name: sig.key.name,
+          name,
           type: type ?? ValueType.String,
           required: !sig.optional,
           description: parseComment(sig.leadingComments)

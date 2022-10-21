@@ -11,6 +11,9 @@ export default async function (option: Option) {
 interface Option {
   // This is root
   root: string;
+
+  // Rest arguments
+  '--': string[];
 }
 
 // Say hello

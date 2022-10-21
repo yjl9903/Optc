@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import { makeOptc } from '../src';
 
-describe('Preset', () => {
+describe('Refl', () => {
   it('should work', async () => {
     const cli = await makeOptc('test/fixtures/option.ts');
     expect(cli.getRawCommands()).toMatchInlineSnapshot(`
