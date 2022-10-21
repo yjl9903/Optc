@@ -1,6 +1,8 @@
 import fs from 'fs-extra';
-import path from 'path';
-import crypto from 'crypto';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import { pathToFileURL } from 'node:url';
+
 import { CAC, cac } from 'cac';
 
 // @ts-ignore
@@ -30,7 +32,7 @@ export async function makeOptc(script: string): Promise<Optc> {
 
   const initOptc = async (): Promise<Optc> => {
     const commands: Command[] = [];
-    const jiti = (await importJiti())(import.meta.url, {
+    const jiti = (await importJiti())(pathToFileURL(script).href, {
       cache: OPTC_CACHE,
       sourceMaps: false,
       transformOptions: {

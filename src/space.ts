@@ -1,7 +1,9 @@
 import os from 'node:os';
-import path from 'node:path';
 import fs from 'fs-extra';
+import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+
+import { findUpSync } from 'find-up';
 
 export const OPTC_CACHE = process.env.OPTC_CACHE === 'false' ? false : true;
 
@@ -9,7 +11,10 @@ export const OPTC_ROOT = process.env.OPTC_ROOT
   ? path.resolve(process.env.OPTC_ROOT)
   : path.join(os.homedir(), '.optc');
 
-export const CACHE_ROOT = path.join(OPTC_ROOT, '.cache');
+const NODE_MODULES = findUpSync('node_modules', { type: 'directory' });
+export const CACHE_ROOT = NODE_MODULES
+  ? path.join(NODE_MODULES, '.cache/optc')
+  : path.join(OPTC_ROOT, '.cache');
 
 export async function ensureSpace() {
   await fs.ensureDir(OPTC_ROOT);
