@@ -20,7 +20,7 @@ importers:
       globby: ^13.1.2
       jiti: ^1.16.0
       kolorist: ^1.6.0
-      magic-regexp: ^0.6.0
+      magic-regexp: ^0.6.1
       prettier: latest
       typescript: ^4.9.3
       unbuild: ^1.0.1
@@ -39,7 +39,7 @@ importers:
       globby: 13.1.2
       jiti: 1.16.0
       kolorist: 1.6.0
-      magic-regexp: 0.6.0
+      magic-regexp: 0.6.1
     devDependencies:
       '@babel/types': 7.20.2
       '@types/babel__core': 7.1.20
@@ -1519,8 +1519,8 @@ packages:
       yallist: 4.0.0
     dev: true
 
-  /magic-regexp/0.6.0:
-    resolution: {integrity: sha512-7zscmuLhvaP7+t0qfnArw6h2QLoduJ3zTHFMY9LdD+M9ZrCmBrDg20ML+XRjkzCHGqst1cnqfS6eQcVsjwSX8Q==}
+  /magic-regexp/0.6.1:
+    resolution: {integrity: sha512-favamdJyxp0Erq1Tc+iGCCVByrmai6h7nSNjmXowoPZgF4onxQzb4n3cw6+ZHtc0bjnV8zNAseUvR/BKfbH0/Q==}
     dependencies:
       estree-walker: 3.0.1
       magic-string: 0.26.7
@@ -1874,7 +1874,7 @@ packages:
   /strip-literal/0.4.2:
     resolution: {integrity: sha512-pv48ybn4iE1O9RLgCAN0iU4Xv7RlBTiit6DKmMiErbs9x1wH6vXBs45tWc0H5wUIF6TLTrKweqkmYF/iraQKNw==}
     dependencies:
-      acorn: 8.8.0
+      acorn: 8.8.1
     dev: true
 
   /supports-color/5.5.0:
