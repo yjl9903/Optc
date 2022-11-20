@@ -101,6 +101,7 @@ async function createNewScript(_filename: string) {
     ];
 
     fs.writeFileSync(filename, template.join('\n'), 'utf-8');
+    fs.chmodSync(filename, 0o755);
   } else {
     console.error(lightRed('Error ') + `${filename} exists`);
   }
