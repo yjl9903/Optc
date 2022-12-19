@@ -25,7 +25,7 @@ importers:
       typescript: ^4.9.4
       unbuild: ^1.0.2
       vite: ^4.0.2
-      vitest: ^0.25.8
+      vitest: ^0.26.0
     dependencies:
       '@babel/core': 7.20.2
       '@babel/plugin-transform-typescript': 7.20.2_@babel+core@7.20.2
@@ -49,7 +49,7 @@ importers:
       typescript: 4.9.4
       unbuild: 1.0.2
       vite: 4.0.2_@types+node@18.11.9
-      vitest: 0.25.8
+      vitest: 0.26.0
 
 packages:
 
@@ -830,6 +830,10 @@ packages:
       electron-to-chromium: 1.4.284
       node-releases: 2.0.6
       update-browserslist-db: 1.0.10_browserslist@4.21.4
+
+  /buffer-from/1.1.2:
+    resolution: {integrity: sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==}
+    dev: true
 
   /builtin-modules/3.3.0:
     resolution: {integrity: sha512-zhaCDicdLuWN5UbN5IMnFqNMhNfo919sH85y2/ea+5Yg9TsTkeZxpL+JLbp6cgYFS4sRLp3YV4S6yDuqVWHYOw==}
@@ -1683,6 +1687,10 @@ packages:
     resolution: {integrity: sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==}
     engines: {node: '>=8'}
 
+  /pathe/0.2.0:
+    resolution: {integrity: sha512-sTitTPYnn23esFR3RlqYBWn4c45WGeLcsKzQiUpXJAyfcWkolvlYpV8FLo7JishK946oQwMFUCHXQ9AjGPKExw==}
+    dev: true
+
   /pathe/0.3.9:
     resolution: {integrity: sha512-6Y6s0vT112P3jD8dGfuS6r+lpa0qqNrLyHPOwvXMnyNTQaYiwgau2DP3aNDsR13xqtGj7rrPo+jFUATpU6/s+g==}
     dev: false
@@ -1859,6 +1867,13 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
+  /source-map-support/0.5.21:
+    resolution: {integrity: sha512-uBHU3L3czsIyYXKX88fdrGovxdSCoTGDRZ6SYXtSRxLZUzHg5P/66Ht6uoUlHu9EZod+inXhKo3qQgwXUT/y1w==}
+    dependencies:
+      buffer-from: 1.1.2
+      source-map: 0.6.1
+    dev: true
+
   /source-map/0.6.1:
     resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}
     engines: {node: '>=0.10.0'}
@@ -2002,6 +2017,27 @@ packages:
       escalade: 3.1.1
       picocolors: 1.0.0
 
+  /vite-node/0.26.0_@types+node@18.11.9:
+    resolution: {integrity: sha512-nLtHWCv6reONl1oFsKhQ/LT7n3UNLpvVARAJlmGrQV6qSElht/9AdN41Pa+WSkw2Winh682UzM0Yw0GNlfqejw==}
+    engines: {node: '>=v14.16.0'}
+    hasBin: true
+    dependencies:
+      debug: 4.3.4
+      mlly: 1.0.0
+      pathe: 0.2.0
+      source-map: 0.6.1
+      source-map-support: 0.5.21
+      vite: 4.0.2_@types+node@18.11.9
+    transitivePeerDependencies:
+      - '@types/node'
+      - less
+      - sass
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+    dev: true
+
   /vite/4.0.2_@types+node@18.11.9:
     resolution: {integrity: sha512-QJaY3R+tFlTagH0exVqbgkkw45B+/bXVBzF2ZD1KB5Z8RiAoiKo60vSUf6/r4c2Vh9jfGBKM4oBI9b4/1ZJYng==}
     engines: {node: ^14.18.0 || >=16.0.0}
@@ -2036,8 +2072,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitest/0.25.8:
-    resolution: {integrity: sha512-X75TApG2wZTJn299E/TIYevr4E9/nBo1sUtZzn0Ci5oK8qnpZAZyhwg0qCeMSakGIWtc6oRwcQFyFfW14aOFWg==}
+  /vitest/0.26.0:
+    resolution: {integrity: sha512-5kUnms5WOa0qrDCJePEPB13v9mhr+ZT1Qy0qNg0eVj1X7/Fx4GY4L1e5s3OH+BQ/J7M5WtaKsUGv9l1pbC7v2Q==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
     peerDependencies:
@@ -2072,6 +2108,7 @@ packages:
       tinypool: 0.3.0
       tinyspy: 1.0.2
       vite: 4.0.2_@types+node@18.11.9
+      vite-node: 0.26.0_@types+node@18.11.9
     transitivePeerDependencies:
       - less
       - sass
