@@ -25,7 +25,7 @@ importers:
       typescript: ^4.9.4
       unbuild: ^1.0.2
       vite: ^4.0.2
-      vitest: ^0.26.1
+      vitest: ^0.26.2
     dependencies:
       '@babel/core': 7.20.2
       '@babel/plugin-transform-typescript': 7.20.2_@babel+core@7.20.2
@@ -49,7 +49,7 @@ importers:
       typescript: 4.9.4
       unbuild: 1.0.2
       vite: 4.0.2_@types+node@18.11.9
-      vitest: 0.26.1
+      vitest: 0.26.2
 
 packages:
 
@@ -2027,8 +2027,8 @@ packages:
       escalade: 3.1.1
       picocolors: 1.0.0
 
-  /vite-node/0.26.1_@types+node@18.11.9:
-    resolution: {integrity: sha512-5FJSKZZJz48zFRKHE55WyevZe61hLMQEsqGn+ungfd60kxEztFybZ3yG9ToGFtOWNCCy7Vn5EVuXD8bdeHOSdw==}
+  /vite-node/0.26.2_@types+node@18.11.9:
+    resolution: {integrity: sha512-4M/zlatItZAyvrQG+82zQBhgDjRZRhVJYFW4T9wcAKh7eMmSiPOVSeI5zsV9UzHXgCcIDKX0o0r3s4OxExTHqg==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
     dependencies:
@@ -2082,8 +2082,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitest/0.26.1:
-    resolution: {integrity: sha512-qTLRnjYmjmJpHlLUtErxtlRqGCe8WItFhGXKklpWivu7CLP9KXN9iTezROe+vf51Kb+BB/fzxK6fUG9DvFGL5Q==}
+  /vitest/0.26.2:
+    resolution: {integrity: sha512-Jvqxh6SDy9SsuslkDjts0iDewDIdq4rveEt69YgDuAb1tVDGV0lDepVaeAFraoySWqneJmOt4TngFFNhlw7GfA==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
     peerDependencies:
@@ -2118,7 +2118,7 @@ packages:
       tinypool: 0.3.0
       tinyspy: 1.0.2
       vite: 4.0.2_@types+node@18.11.9
-      vite-node: 0.26.1_@types+node@18.11.9
+      vite-node: 0.26.2_@types+node@18.11.9
     transitivePeerDependencies:
       - less
       - sass
