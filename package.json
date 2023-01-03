@@ -52,7 +52,7 @@
     "@babel/plugin-transform-typescript": "^7.20.2",
     "@types/fs-extra": "^9.0.13",
     "@types/node": "^18.11.9",
-    "axios": "^1.2.1",
+    "axios": "^1.2.2",
     "cac": "^6.7.14",
     "debug": "^4.3.4",
     "find-up": "^6.3.0",
