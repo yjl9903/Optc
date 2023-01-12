@@ -1,4 +1,3 @@
-import path from 'node:path';
 import { defineBuildConfig } from 'unbuild';
 
 import { MagicRegExpTransformPlugin } from 'magic-regexp/transform';
