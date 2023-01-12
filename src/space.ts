@@ -5,6 +5,8 @@ import { fileURLToPath } from 'node:url';
 
 import { findUpSync } from 'find-up';
 
+import { version } from '../package.json';
+
 export const OPTC_CACHE = process.env.OPTC_CACHE === 'false' ? false : true;
 
 export const OPTC_ROOT = process.env.OPTC_ROOT
@@ -28,7 +30,10 @@ export async function ensureSpace() {
         {
           name: 'optc-workspace',
           private: true,
-          dependencies: {}
+          dependencies: {},
+          optc: {
+            version
+          }
         },
         null,
         2
