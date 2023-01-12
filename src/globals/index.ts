@@ -18,8 +18,10 @@ export async function registerGlobal(preset?: string) {
   global.readTextFile = readTextFile;
   global.writeTextFile = writeTextFile;
   global.glob = globby;
+  global.globby = globby;
   global.sleep = sleep;
   global.http = axios;
+  global.axios = axios;
 
   for (const key of [
     'copy',

@@ -2,8 +2,8 @@
 
 import * as _path from 'node:path';
 import * as _fs from 'fs-extra';
-import _axios from 'axios';
-import { globby } from 'globby';
+import _axios, { type AxiosInstance as _AxiosInstance } from 'axios';
+import { globby as _globby } from 'globby';
 
 import type { ProcessResult } from './dist';
 
@@ -45,13 +45,19 @@ declare global {
   /**
    * globby
    */
-  export const glob: typeof globby;
+  export const glob: typeof _globby;
+  export const globby: typeof _globby;
 
   /**
    * axios
    */
   export const http: typeof _axios;
+  export const axios: typeof _axios;
+  export type AxiosInstance = _AxiosInstance;
 
+  /**
+   * Read file content helper function
+   */
   export const readTextFile: (filename: string) => string;
   export const writeTextFile: (filename: string, content: string) => void;
 
