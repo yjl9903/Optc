@@ -45,7 +45,7 @@
     "release": "bumpp --commit --push --tag && pnpm publish",
     "test": "OPTC_CACHE=false OPTC_ROOT=./test/space vitest",
     "typecheck": "tsc --noEmit",
-    "postversion": "pnpm build"
+    "preversion": "pnpm build"
   },
   "dependencies": {
     "@babel/core": "^7.20.12",
