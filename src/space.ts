@@ -41,7 +41,7 @@ export async function ensureSpace() {
     await fs.writeFile(dep, body, 'utf-8');
   }
   if (!fs.existsSync(dts)) {
-    const globalsDts = path.join(fileURLToPath(import.meta.url), '../../globals.d.ts');
+    const globalsDts = path.join(fileURLToPath(import.meta.url), '../../../globals.d.ts');
     const body = `/// <reference path="${globalsDts}" />`;
     await fs.writeFile(dts, body, 'utf-8');
   }
