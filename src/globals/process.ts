@@ -13,7 +13,11 @@ export function Process(
 ): Promise<ProcessResult> {
   const parseCmd = () => {
     const escape = (arg: any) => {
-      if (typeof arg === 'string') {
+      if (typeof arg === 'number') {
+        return '' + arg;
+      } else if (typeof arg === 'boolean') {
+        return arg ? 'true' : 'false';
+      } else if (typeof arg === 'string') {
         if (arg === '' || /^[a-z0-9/_.-]+$/i.test(arg)) {
           return arg;
         } else {
