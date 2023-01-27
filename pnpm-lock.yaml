@@ -11,7 +11,7 @@ importers:
       '@types/debug': ^4.1.7
       '@types/fs-extra': ^11.0.1
       '@types/node': ^18.11.18
-      axios: ^1.2.3
+      axios: ^1.2.5
       bumpp: latest
       cac: ^6.7.14
       debug: ^4.3.4
@@ -31,7 +31,7 @@ importers:
       '@babel/plugin-transform-typescript': 7.20.7_@babel+core@7.20.12
       '@types/fs-extra': 11.0.1
       '@types/node': 18.11.18
-      axios: 1.2.3_debug@4.3.4
+      axios: 1.2.5_debug@4.3.4
       cac: 6.7.14
       debug: 4.3.4
       find-up: 6.3.0
@@ -1024,8 +1024,8 @@ packages:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
     dev: false
 
-  /axios/1.2.3_debug@4.3.4:
-    resolution: {integrity: sha512-pdDkMYJeuXLZ6Xj/Q5J3Phpe+jbGdsSzlQaFVkMQzRUL05+6+tetX8TV3p4HrU4kzuO9bt+io/yGQxuyxA/xcw==}
+  /axios/1.2.5_debug@4.3.4:
+    resolution: {integrity: sha512-9pU/8mmjSSOb4CXVsvGIevN+MlO/t9OWtKadTaLuN85Gge3HGorUckgp8A/2FH4V4hJ7JuQ3LIeI7KAV9ITZrQ==}
     dependencies:
       follow-redirects: 1.15.2_debug@4.3.4
       form-data: 4.0.0
