@@ -22,7 +22,7 @@ importers:
       kolorist: ^1.6.0
       magic-regexp: ^0.6.1
       prettier: latest
-      typescript: ^4.9.4
+      typescript: ^4.9.5
       unbuild: ^1.1.1
       vite: ^4.0.4
       vitest: ^0.28.3
@@ -46,7 +46,7 @@ importers:
       '@types/debug': 4.1.7
       bumpp: 8.2.1
       prettier: 2.8.3
-      typescript: 4.9.4
+      typescript: 4.9.5
       unbuild: 1.1.1
       vite: 4.0.4_@types+node@18.11.18
       vitest: 0.28.3
@@ -1647,7 +1647,7 @@ packages:
     hasBin: true
     dev: true
 
-  /mkdist/1.1.0_typescript@4.9.4:
+  /mkdist/1.1.0_typescript@4.9.5:
     resolution: {integrity: sha512-eTw467KIfd/ilsY/yS6N/fjCe/glP99bTU+ydVJFRUZYaZ3UnL09Q5SGVhMrHLr4Q5qL1pDVDgitQTmLLpUa2A==}
     hasBin: true
     peerDependencies:
@@ -1666,7 +1666,7 @@ packages:
       jiti: 1.16.2
       mri: 1.2.0
       pathe: 1.1.0
-      typescript: 4.9.4
+      typescript: 4.9.5
     dev: true
 
   /mlly/0.5.16:
@@ -1853,7 +1853,7 @@ packages:
     resolution: {integrity: sha512-U9nH88a3fc/ekCF1l0/UP1IosiuIjyTh7hBvXVMHYgVcfGvt897Xguj2UOLDeI5BG2m7/uwyaLVT6fbtCwTyzw==}
     engines: {iojs: '>=1.0.0', node: '>=0.10.0'}
 
-  /rollup-plugin-dts/5.1.1_eymahajmafh3u7vrzmo7ylp2pa:
+  /rollup-plugin-dts/5.1.1_7mpoqkhr4quqyqspt5pbn5qgku:
     resolution: {integrity: sha512-zpgo52XmnLg8w4k3MScinFHZK1+ro6r7uVe34fJ0Ee8AM45FvgvTuvfWWaRgIpA4pQ1BHJuu2ospncZhkcJVeA==}
     engines: {node: '>=v14'}
     peerDependencies:
@@ -1862,7 +1862,7 @@ packages:
     dependencies:
       magic-string: 0.27.0
       rollup: 3.10.0
-      typescript: 4.9.4
+      typescript: 4.9.5
     optionalDependencies:
       '@babel/code-frame': 7.18.6
     dev: true
@@ -2035,8 +2035,8 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /typescript/4.9.4:
-    resolution: {integrity: sha512-Uz+dTXYzxXXbsFpM86Wh3dKCxrQqUcVMxwU54orwlJjOpO3ao8L7j5lH+dWfTwgCwIuM9GQ2kvVotzYJMXTBZg==}
+  /typescript/4.9.5:
+    resolution: {integrity: sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==}
     engines: {node: '>=4.2.0'}
     hasBin: true
     dev: true
@@ -2068,16 +2068,16 @@ packages:
       jiti: 1.16.2
       magic-string: 0.27.0
       mkdirp: 1.0.4
-      mkdist: 1.1.0_typescript@4.9.4
+      mkdist: 1.1.0_typescript@4.9.5
       mlly: 1.1.0
       mri: 1.2.0
       pathe: 1.0.0
       pkg-types: 1.0.1
       pretty-bytes: 6.0.0
       rollup: 3.10.0
-      rollup-plugin-dts: 5.1.1_eymahajmafh3u7vrzmo7ylp2pa
+      rollup-plugin-dts: 5.1.1_7mpoqkhr4quqyqspt5pbn5qgku
       scule: 1.0.0
-      typescript: 4.9.4
+      typescript: 4.9.5
       untyped: 1.2.2
     transitivePeerDependencies:
       - sass
