@@ -69,7 +69,7 @@
     "bumpp": "latest",
     "prettier": "latest",
     "typescript": "^4.9.5",
-    "unbuild": "^1.1.1",
+    "unbuild": "^1.1.2",
     "vite": "^4.1.1",
     "vitest": "^0.28.5"
   },
