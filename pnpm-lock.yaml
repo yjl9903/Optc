@@ -18,7 +18,7 @@ importers:
       find-up: ^6.3.0
       fs-extra: ^11.1.0
       globby: ^13.1.3
-      jiti: ^1.16.2
+      jiti: ^1.18.2
       kolorist: ^1.7.0
       magic-regexp: ^0.6.1
       prettier: latest
@@ -37,7 +37,7 @@ importers:
       find-up: 6.3.0
       fs-extra: 11.1.0
       globby: 13.1.3
-      jiti: 1.16.2
+      jiti: 1.18.2
       kolorist: 1.7.0
       magic-regexp: 0.6.1
     devDependencies:
@@ -1528,15 +1528,9 @@ packages:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
     dev: true
 
-  /jiti/1.16.2:
-    resolution: {integrity: sha512-OKBOVWmU3FxDt/UH4zSwiKPuc1nihFZiOD722FuJlngvLz2glX1v2/TJIgoA4+mrpnXxHV6dSAoCvPcYQtoG5A==}
+  /jiti/1.18.2:
+    resolution: {integrity: sha512-QAdOptna2NYiSSpv0O/BwoHBSmz4YhpzJHyi+fnMRTXFjp7B8i/YG5Z8IfusxB1ufjcD2Sre1F3R+nX3fvy7gg==}
     hasBin: true
-    dev: false
-
-  /jiti/1.17.1:
-    resolution: {integrity: sha512-NZIITw8uZQFuzQimqjUxIrIcEdxYDFIe/0xYfIlVXTkiBjjyBEvgasj5bb0/cHtPRD/NziPbT312sFrkI5ALpw==}
-    hasBin: true
-    dev: true
 
   /js-tokens/4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
@@ -1677,7 +1671,7 @@ packages:
       esbuild: 0.17.8
       fs-extra: 11.1.0
       globby: 13.1.3
-      jiti: 1.17.1
+      jiti: 1.18.2
       mri: 1.2.0
       pathe: 1.1.0
       typescript: 4.9.5
@@ -2060,7 +2054,7 @@ packages:
       esbuild: 0.17.8
       globby: 13.1.3
       hookable: 5.4.2
-      jiti: 1.17.1
+      jiti: 1.18.2
       magic-string: 0.29.0
       mkdist: 1.1.1_typescript@4.9.5
       mlly: 1.1.1
