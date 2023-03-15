@@ -48,8 +48,8 @@
     "postversion": "pnpm build"
   },
   "dependencies": {
-    "@babel/core": "^7.20.12",
-    "@babel/plugin-transform-typescript": "^7.20.7",
+    "@babel/core": "^7.21.3",
+    "@babel/plugin-transform-typescript": "^7.21.3",
     "@types/fs-extra": "^11.0.1",
     "@types/node": "^18.11.18",
     "axios": "^1.2.5",
@@ -63,7 +63,7 @@
     "magic-regexp": "^0.6.1"
   },
   "devDependencies": {
-    "@babel/types": "^7.20.7",
+    "@babel/types": "^7.21.3",
     "@types/babel__core": "^7.20.0",
     "@types/debug": "^4.1.7",
     "bumpp": "latest",
