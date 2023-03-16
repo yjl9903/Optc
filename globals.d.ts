@@ -1,4 +1,5 @@
 /// <reference types="@types/node" />
+/// <reference types="@total-typescript/ts-reset" />
 
 import * as _path from 'node:path';
 import * as _fs from 'fs-extra';
