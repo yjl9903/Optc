@@ -47,6 +47,7 @@
     "release": "bumpp --commit --push --tag && pnpm publish",
     "test": "OPTC_CACHE=false OPTC_ROOT=./test/space vitest",
     "typecheck": "tsc --noEmit",
+    "preversion": "pnpm build && pnpm test",
     "postversion": "pnpm build"
   },
   "dependencies": {
