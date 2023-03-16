@@ -10,7 +10,7 @@ importers:
       '@types/babel__core': ^7.20.0
       '@types/debug': ^4.1.7
       '@types/fs-extra': ^11.0.1
-      '@types/node': ^18.11.18
+      '@types/node': ^18.15.3
       axios: ^1.3.4
       bumpp: latest
       cac: ^6.7.14
@@ -30,7 +30,7 @@ importers:
       '@babel/core': 7.21.3
       '@babel/plugin-transform-typescript': 7.21.3_@babel+core@7.21.3
       '@types/fs-extra': 11.0.1
-      '@types/node': 18.11.18
+      '@types/node': 18.15.3
       axios: 1.3.4_debug@4.3.4
       cac: 6.7.14
       debug: 4.3.4
@@ -48,7 +48,7 @@ importers:
       prettier: 2.8.4
       typescript: 4.9.5
       unbuild: 1.1.2
-      vite: 4.1.4_@types+node@18.11.18
+      vite: 4.1.4_@types+node@18.15.3
       vitest: 0.29.3
 
 packages:
@@ -948,21 +948,21 @@ packages:
     resolution: {integrity: sha512-MxObHvNl4A69ofaTRU8DFqvgzzv8s9yRtaPPm5gud9HDNvpB3GPQFvNuTWAI59B9huVGV5jXYJwbCsmBsOGYWA==}
     dependencies:
       '@types/jsonfile': 6.1.1
-      '@types/node': 18.11.18
+      '@types/node': 18.15.3
     dev: false
 
   /@types/jsonfile/6.1.1:
     resolution: {integrity: sha512-GSgiRCVeapDN+3pqA35IkQwasaCh/0YFH5dEF6S88iDvEn901DjOeH3/QPY+XYP1DFzDZPvIvfeEgk+7br5png==}
     dependencies:
-      '@types/node': 18.11.18
+      '@types/node': 18.15.3
     dev: false
 
   /@types/ms/0.7.31:
     resolution: {integrity: sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==}
     dev: true
 
-  /@types/node/18.11.18:
-    resolution: {integrity: sha512-DHQpWGjyQKSHj3ebjFI/wRKcqQcdR+MoFBygntYOZytCqNfkd2ZC4ARDJ2DQqhjH5p85Nnd3jhUJIXrszFX/JA==}
+  /@types/node/18.15.3:
+    resolution: {integrity: sha512-p6ua9zBxz5otCmbpb5D3U4B5Nanw6Pk3PPyX05xnxbB/fRv71N7CPmORg7uAD5P70T0xmx1pzAx/FUfa5X+3cw==}
 
   /@types/resolve/1.20.2:
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
@@ -2094,7 +2094,7 @@ packages:
       escalade: 3.1.1
       picocolors: 1.0.0
 
-  /vite-node/0.29.3_@types+node@18.11.18:
+  /vite-node/0.29.3_@types+node@18.15.3:
     resolution: {integrity: sha512-QYzYSA4Yt2IiduEjYbccfZQfxKp+T1Do8/HEpSX/G5WIECTFKJADwLs9c94aQH4o0A+UtCKU61lj1m5KvbxxQA==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
@@ -2104,7 +2104,7 @@ packages:
       mlly: 1.1.1
       pathe: 1.1.0
       picocolors: 1.0.0
-      vite: 4.1.4_@types+node@18.11.18
+      vite: 4.1.4_@types+node@18.15.3
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -2115,7 +2115,7 @@ packages:
       - terser
     dev: true
 
-  /vite/4.1.4_@types+node@18.11.18:
+  /vite/4.1.4_@types+node@18.15.3:
     resolution: {integrity: sha512-3knk/HsbSTKEin43zHu7jTwYWv81f8kgAL99G5NWBcA1LKvtvcVAC4JjBH1arBunO9kQka+1oGbrMKOjk4ZrBg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -2140,7 +2140,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 18.11.18
+      '@types/node': 18.15.3
       esbuild: 0.16.17
       postcss: 8.4.21
       resolve: 1.22.1
@@ -2173,7 +2173,7 @@ packages:
     dependencies:
       '@types/chai': 4.3.4
       '@types/chai-subset': 1.3.3
-      '@types/node': 18.11.18
+      '@types/node': 18.15.3
       '@vitest/expect': 0.29.3
       '@vitest/runner': 0.29.3
       '@vitest/spy': 0.29.3
@@ -2192,8 +2192,8 @@ packages:
       tinybench: 2.3.1
       tinypool: 0.3.1
       tinyspy: 1.0.2
-      vite: 4.1.4_@types+node@18.11.18
-      vite-node: 0.29.3_@types+node@18.11.18
+      vite: 4.1.4_@types+node@18.15.3
+      vite-node: 0.29.3_@types+node@18.15.3
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
       - less
