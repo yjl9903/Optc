@@ -22,7 +22,8 @@ export async function ensureSpace() {
   await fs.ensureDir(OPTC_ROOT);
   const dep = path.join(OPTC_ROOT, 'dep.ts');
   const pkg = path.join(OPTC_ROOT, 'package.json');
-  const dts = path.join(OPTC_ROOT, 'globals.d.ts');
+  const optcDts = path.join(OPTC_ROOT, 'optc.d.ts');
+  const globalDts = path.join(OPTC_ROOT, 'globals.d.ts');
   if (!fs.existsSync(pkg)) {
     await fs.writeFile(
       pkg,
@@ -45,9 +46,13 @@ export async function ensureSpace() {
     const body = `export default function(global: any) {\n\n}`;
     await fs.writeFile(dep, body, 'utf-8');
   }
-  if (!fs.existsSync(dts)) {
-    const globalsDts = path.join(fileURLToPath(import.meta.url), '../../../globals.d.ts');
-    const body = `/// <reference path="${globalsDts}" />`;
-    await fs.writeFile(dts, body, 'utf-8');
+  if (!fs.existsSync(globalDts)) {
+    const dts = path.join(fileURLToPath(import.meta.url), '../../../globals.d.ts');
+    const body = `/// <reference path="${dts}" />`;
+    await fs.writeFile(globalDts, body, 'utf-8');
+  }
+  if (!fs.existsSync(optcDts)) {
+    const body = `/// <reference path="./optc.d.ts" />`;
+    await fs.writeFile(optcDts, body, 'utf-8');
   }
 }
