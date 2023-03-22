@@ -113,4 +113,4 @@ export default function(global: any) {
 
 ## License
 
-MIT License © 2021 [XLor](https://github.com/yjl9903)
+MIT License © 2023 [XLor](https://github.com/yjl9903)
