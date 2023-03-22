@@ -31,12 +31,4 @@ jobs:
         run: pnpm build
 
       - name: Test
-        run: |
-          pnpm test
-          pnpm link -g
-          chmod +x examples/*.ts
-          ./examples/dir.ts
-          
-          if [ $(./examples/echo.ts hello) != "hello" ] ; then
-            exit 1
-          fi
+        run: pnpm test:ci

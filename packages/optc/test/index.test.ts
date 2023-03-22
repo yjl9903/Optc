@@ -4,15 +4,15 @@ import { bootstrap, makeOptc } from '../src';
 
 describe('Examples', () => {
   it('http', () => {
-    expect(() => bootstrap('examples/http.ts', 'http://numbersapi.com/42')).not.toThrow();
+    expect(() => bootstrap('../../examples/http.ts', 'http://numbersapi.com/42')).not.toThrow();
   });
 
   it('node', () => {
-    expect(() => bootstrap('examples/node.ts')).not.toThrow();
+    expect(() => bootstrap('../../examples/node.ts')).not.toThrow();
   });
 
   it('pkg', () => {
-    expect(() => bootstrap('examples/pkg.ts', '--root', '.')).not.toThrow();
+    expect(() => bootstrap('../../examples/pkg.ts', '--root', '.')).not.toThrow();
   });
 
   it('process', async () => {

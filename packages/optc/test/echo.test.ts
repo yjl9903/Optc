@@ -3,7 +3,7 @@ import { describe, expect, it, should } from 'vitest';
 import { makeOptc } from '../src';
 
 describe('Echo', async () => {
-  const cli = await makeOptc('examples/echo.ts');
+  const cli = await makeOptc('../../examples/echo.ts');
 
   it('should work', async () => {
     expect(await cli.run(['test'])).toMatchInlineSnapshot('"test"');
