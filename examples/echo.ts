@@ -12,7 +12,7 @@ export default function (text: string) {
 
 // Greet someone
 export function greet(name?: string, option?: { prefix: string }) {
-  const text = `${option?.prefix || 'Hello'}, ${name ?? 'Stranger'}`;
+  const text = `${option?.prefix ?? 'Hello'}, ${name ?? 'Stranger'}`;
   console.log(text);
   return text;
 }
