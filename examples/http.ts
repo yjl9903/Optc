@@ -1,6 +1,6 @@
 #!/usr/bin/env optc
 
-/// <reference path="../globals.d.ts" />
+/// <reference path="../packages/optc/globals.d.ts" />
 
 export async function get(url: string) {
   const { data } = await http.get(url);
