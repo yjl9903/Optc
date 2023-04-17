@@ -17,7 +17,7 @@
     "bumpp": "latest",
     "magic-regexp": "^0.6.3",
     "prettier": "latest",
-    "turbo": "^1.9.2",
+    "turbo": "^1.9.3",
     "typescript": "^5.0.4",
     "unbuild": "^1.2.1",
     "vite": "^4.2.1",
