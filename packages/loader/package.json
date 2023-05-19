@@ -45,7 +45,7 @@
   },
   "dependencies": {
     "@swc/core": "^1.3.49",
-    "breadc": "^0.9.3",
+    "breadc": "^0.9.5",
     "debug": "^4.3.4",
     "pirates": "^4.0.5"
   },
