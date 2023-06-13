@@ -66,8 +66,8 @@ optc examples/echo.ts --help
 #   -h, --help     Display this message
 
 # or use it directly, make sure you grant the executable permissions
-./examples/echo.ts greet Optc
-# Hello, Optc
+./examples/echo.ts greet Optc --prefix Hi
+# Hi, Optc
 ```
 
 You can see more examples in the [./examples](./examples).
