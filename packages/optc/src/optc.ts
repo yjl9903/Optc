@@ -47,21 +47,25 @@ export class Optc {
         }
       }
 
-      command.options
-        .reduce((cmd, option) => {
-          let text = `--${option.name}`;
-          if (option.type === ValueType.String || option.type === ValueType.Number) {
-            if (option.required) {
-              text += ' <text>';
-            } else {
-              text += ' <text>';
-            }
-          } else if (option.type === ValueType.Array) {
-            text += ' [...text]';
+      const cmd = command.options.reduce((cmd, option) => {
+        let text = `--${option.name}`;
+        if (option.type === ValueType.String || option.type === ValueType.Number) {
+          if (option.required) {
+            text += ' <text>';
+          } else {
+            text += ' <text>';
           }
-          return cmd.option(text, option.description);
-        }, this.breadc.command(name.join(' '), command.description))
-        .action(fn);
+        } else if (option.type === ValueType.Array) {
+          text += ' [...text]';
+        }
+        return cmd.option(text, option.description);
+      }, this.breadc.command(name.join(' '), command.description));
+
+      if (command.default && command.name) {
+        cmd.alias(command.name);
+      }
+
+      cmd.action(fn);
     }
   }
 
