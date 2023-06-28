@@ -21,8 +21,10 @@ export const name = 'echo';
 
 export const version = '0.0.0';
 
+export const description = 'Print some messages';
+
 // Echo some message
-export default function (text: string) {
+export default function echo(text: string) {
   console.log(text);
   return text;
 }
@@ -49,21 +51,16 @@ optc examples/echo.ts --version
 
 optc examples/echo.ts --help
 # echo/0.0.0
-#
-# Usage:
-#   $ echo <text>
-#
+# 
+# Usage: echo [OPTIONS] [COMMAND]
+# 
 # Commands:
-#   <text>        Echo some message
-#   greet [name]  Greet someone
-#
-# For more info, run any command with the `--help` flag:
-#   $ echo --help
-#   $ echo greet --help
-#
+#   echo <text>        Echo some message
+#   echo greet [name]  Greet someone
+# 
 # Options:
-#   -v, --version  Display version number
-#   -h, --help     Display this message
+#   -h, --help     Print help
+#   -v, --version  Print version
 
 # or use it directly, make sure you grant the executable permissions
 ./examples/echo.ts greet Optc --prefix Hi
