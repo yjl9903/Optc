@@ -16,7 +16,7 @@ importers:
         version: 0.7.0
       prettier:
         specifier: latest
-        version: 2.8.8
+        version: 3.0.0
       turbo:
         specifier: ^1.10.7
         version: 1.10.7
@@ -85,8 +85,8 @@ importers:
         specifier: ^11.1.1
         version: 11.1.1
       globby:
-        specifier: ^13.2.0
-        version: 13.2.0
+        specifier: ^13.2.2
+        version: 13.2.2
       jiti:
         specifier: ^1.18.2
         version: 1.18.2
@@ -1438,8 +1438,8 @@ packages:
     resolution: {integrity: sha512-WOBp/EEGUiIsJSp7wcv/y6MO+lV9UoncWqxuFfm8eBwzWNgyfBd6Gz+IeKQ9jCmyhoH99g15M3T+QaVHFjizVA==}
     engines: {node: '>=4'}
 
-  /globby@13.2.0:
-    resolution: {integrity: sha512-jWsQfayf13NvqKUIL3Ta+CIqMnvlaIDFveWE/dpOZ9+3AMEJozsxDvKA02zync9UuvOM8rOXzsD5GqKP4OnWPQ==}
+  /globby@13.2.2:
+    resolution: {integrity: sha512-Y1zNGV+pzQdh7H39l9zgB4PJqjRNqydvdYCDG4HFXM4XuvSaQQlEc91IU1yALL8gUTDomgBAfz3XJdmUS+oo0w==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dependencies:
       dir-glob: 3.0.1
@@ -1702,7 +1702,7 @@ packages:
       defu: 6.1.2
       esbuild: 0.17.19
       fs-extra: 11.1.1
-      globby: 13.2.0
+      globby: 13.2.2
       jiti: 1.18.2
       mlly: 1.4.0
       mri: 1.2.0
@@ -1827,9 +1827,9 @@ packages:
       source-map-js: 1.0.2
     dev: true
 
-  /prettier@2.8.8:
-    resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
-    engines: {node: '>=10.13.0'}
+  /prettier@3.0.0:
+    resolution: {integrity: sha512-zBf5eHpwHOGPC47h0zrPyNn+eAEIdEzfywMoYn2XPi0P44Zp0tSq64rq0xAREh4auw2cJZHo9QUob+NqCQky4g==}
+    engines: {node: '>=14'}
     hasBin: true
     dev: true
 
@@ -2126,7 +2126,7 @@ packages:
       consola: 3.2.2
       defu: 6.1.2
       esbuild: 0.17.19
-      globby: 13.2.0
+      globby: 13.2.2
       hookable: 5.5.3
       jiti: 1.18.2
       magic-string: 0.30.0
