@@ -15,18 +15,25 @@ import { Command, Parameter, Option, ValueType } from './types';
 
 const debug = createDebug('optc:reflection');
 
-export function ReflectionPlugin(_ctx: any, option: { commands: Command[] }): PluginObj {
+export function ReflectionPlugin(
+  _ctx: any,
+  option: { code: string; commands: Command[] }
+): PluginObj {
   debug('Create Reflection Plugin');
 
   const optionMap = new Map<string, Option[]>();
+  const mainCode = option.code.toString();
+  const isSkip = (code: string) => code !== mainCode;
 
   return {
     name: 'optc-reflection',
-    pre() {
+    pre(file) {
       optionMap.clear();
     },
     visitor: {
-      ExportDeclaration(exportPath) {
+      ExportDeclaration(exportPath, state) {
+        if (isSkip(state.file.code)) return;
+
         const isDefault = exportPath.node.type === 'ExportDefaultDeclaration';
 
         exportPath.traverse({
@@ -104,7 +111,9 @@ export function ReflectionPlugin(_ctx: any, option: { commands: Command[] }): Pl
           }
         });
       },
-      TSInterfaceDeclaration(path) {
+      TSInterfaceDeclaration(path, state) {
+        if (isSkip(state.file.code)) return;
+
         debug('Declare Interface');
 
         const options = parseOptions(path.node.body.body);

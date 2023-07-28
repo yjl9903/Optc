@@ -36,7 +36,7 @@ export async function makeOptc(script: string): Promise<Optc> {
       transformOptions: {
         babel: {
           plugins: [
-            [ReflectionPlugin, { commands }],
+            [ReflectionPlugin, { code: content, commands }],
             [BabelTsPlugin, {}]
           ]
         }

@@ -16,7 +16,9 @@ describe('Examples', () => {
   });
 
   it('process', async () => {
-    expect((await bootstrap('test/fixtures/process.ts', 'hello')).stdout).toEqual('hello\n');
+    expect(
+      (await bootstrap<{ stdout: string }>('test/fixtures/process.ts', 'hello')).stdout.trim()
+    ).toEqual('hello');
   });
 });
 
