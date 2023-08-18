@@ -61,8 +61,8 @@ importers:
         specifier: ^7.22.10
         version: 7.22.10(@babel/core@7.22.10)
       '@total-typescript/ts-reset':
-        specifier: ^0.4.2
-        version: 0.4.2
+        specifier: ^0.5.1
+        version: 0.5.1
       '@types/fs-extra':
         specifier: ^11.0.1
         version: 11.0.1
@@ -1041,8 +1041,8 @@ packages:
       '@swc/core-win32-x64-msvc': 1.3.68
     dev: false
 
-  /@total-typescript/ts-reset@0.4.2:
-    resolution: {integrity: sha512-vqd7ZUDSrXFVT1n8b2kc3LnklncDQFPvR58yUS1kEP23/nHPAO9l1lMjUfnPrXYYk4Hj54rrLKMW5ipwk7k09A==}
+  /@total-typescript/ts-reset@0.5.1:
+    resolution: {integrity: sha512-AqlrT8YA1o7Ff5wPfMOL0pvL+1X+sw60NN6CcOCqs658emD6RfiXhF7Gu9QcfKBH7ELY2nInLhKSCWVoNL70MQ==}
     dev: false
 
   /@types/babel__core@7.20.1:
