@@ -70,7 +70,7 @@
     "@types/babel__core": "^7.20.1",
     "@types/debug": "^4.1.8"
   },
-  "packageManager": "pnpm@8.7.0",
+  "packageManager": "pnpm@8.7.1",
   "engines": {
     "node": ">=v16.0.0"
   }
