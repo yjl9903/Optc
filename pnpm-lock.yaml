@@ -49,8 +49,8 @@ importers:
         version: 4.0.6
     devDependencies:
       '@types/debug':
-        specifier: ^4.1.9
-        version: 4.1.9
+        specifier: ^4.1.10
+        version: 4.1.10
 
   packages/optc:
     dependencies:
@@ -101,8 +101,8 @@ importers:
         specifier: ^7.20.3
         version: 7.20.3
       '@types/debug':
-        specifier: ^4.1.9
-        version: 4.1.9
+        specifier: ^4.1.10
+        version: 4.1.10
 
 packages:
 
@@ -1103,8 +1103,8 @@ packages:
     resolution: {integrity: sha512-VOVRLM1mBxIRxydiViqPcKn6MIxZytrbMpd6RJLIWKxUNr3zux8no0Oc7kJx0WAPIitgZ0gkrDS+btlqQpubpw==}
     dev: true
 
-  /@types/debug@4.1.9:
-    resolution: {integrity: sha512-8Hz50m2eoS56ldRlepxSBa6PWEVCtzUo/92HgLc2qTMnotJNIm7xP+UZhyWoYsyOdd5dxZ+NZLb24rsKyFs2ow==}
+  /@types/debug@4.1.10:
+    resolution: {integrity: sha512-tOSCru6s732pofZ+sMv9o4o3Zc+Sa8l3bxd/tweTQudFn06vAzb13ZX46Zi6m6EJ+RUbRTHvgQJ1gBtSgkaUYA==}
     dependencies:
       '@types/ms': 0.7.31
     dev: true
