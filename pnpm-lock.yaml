@@ -98,8 +98,8 @@ importers:
         specifier: ^7.23.0
         version: 7.23.0
       '@types/babel__core':
-        specifier: ^7.20.3
-        version: 7.20.3
+        specifier: ^7.20.4
+        version: 7.20.4
       '@types/debug':
         specifier: ^4.1.10
         version: 4.1.10
@@ -1056,8 +1056,8 @@ packages:
     resolution: {integrity: sha512-AqlrT8YA1o7Ff5wPfMOL0pvL+1X+sw60NN6CcOCqs658emD6RfiXhF7Gu9QcfKBH7ELY2nInLhKSCWVoNL70MQ==}
     dev: false
 
-  /@types/babel__core@7.20.3:
-    resolution: {integrity: sha512-54fjTSeSHwfan8AyHWrKbfBWiEUrNTZsUwPTDSNaaP1QDQIZbeNUg3a59E9D+375MzUw/x1vx2/0F5LBz+AeYA==}
+  /@types/babel__core@7.20.4:
+    resolution: {integrity: sha512-mLnSC22IC4vcWiuObSRjrLd9XcBTGf59vUSoq2jkQDJ/QQ8PMI9rSuzE+aEV8karUMbskw07bKYoUJCKTUaygg==}
     dependencies:
       '@babel/parser': 7.23.0
       '@babel/types': 7.23.0
