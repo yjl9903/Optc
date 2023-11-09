@@ -68,7 +68,7 @@
   "devDependencies": {
     "@babel/types": "^7.23.0",
     "@types/babel__core": "^7.20.4",
-    "@types/debug": "^4.1.11"
+    "@types/debug": "^4.1.12"
   },
   "packageManager": "pnpm@8.10.2",
   "engines": {
