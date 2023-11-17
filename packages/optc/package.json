@@ -55,7 +55,7 @@
     "@babel/plugin-transform-typescript": "^7.23.3",
     "@total-typescript/ts-reset": "^0.5.1",
     "@types/fs-extra": "^11.0.4",
-    "@types/node": "^20.9.0",
+    "@types/node": "^20.9.1",
     "axios": "^1.6.2",
     "breadc": "^0.9.7",
     "debug": "^4.3.4",
