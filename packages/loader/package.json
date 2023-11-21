@@ -44,7 +44,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@swc/core": "^1.3.68",
+    "@swc/core": "^1.3.99",
     "breadc": "^0.9.7",
     "debug": "^4.3.4",
     "pirates": "^4.0.6"
