@@ -67,7 +67,7 @@ importers:
         specifier: ^11.0.4
         version: 11.0.4
       '@types/node':
-        specifier: ^20.10.2
+        specifier: ^20.10.3
         version: 20.10.3
       axios:
         specifier: ^1.6.2
