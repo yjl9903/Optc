@@ -63,7 +63,8 @@
     "fs-extra": "^11.2.0",
     "globby": "^14.0.0",
     "jiti": "^1.21.0",
-    "kolorist": "^1.8.0"
+    "kolorist": "^1.8.0",
+    "scule": "^1.1.1"
   },
   "devDependencies": {
     "@babel/types": "^7.23.6",

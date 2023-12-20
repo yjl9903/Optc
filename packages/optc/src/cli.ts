@@ -94,7 +94,7 @@ async function createNewScript(_filename: string) {
       '',
       isLocal ? `/// <reference types="optc/globals" />` : `/// <reference path="${globalsDts}" />`,
       '',
-      'export default async function() {',
+      'export default async function () {',
       '  ',
       '}',
       ''

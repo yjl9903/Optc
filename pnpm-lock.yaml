@@ -93,6 +93,9 @@ importers:
       kolorist:
         specifier: ^1.8.0
         version: 1.8.0
+      scule:
+        specifier: ^1.1.1
+        version: 1.1.1
     devDependencies:
       '@babel/types':
         specifier: ^7.23.6
@@ -2656,7 +2659,6 @@ packages:
 
   /scule@1.1.1:
     resolution: {integrity: sha512-sHtm/SsIK9BUBI3EFT/Gnp9VoKfY6QLvlkvAE6YK7454IF8FSgJEAnJpVdSC7K5/pjI5NfxhzBLW2JAfYA/shQ==}
-    dev: true
 
   /semver@6.3.1:
     resolution: {integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==}

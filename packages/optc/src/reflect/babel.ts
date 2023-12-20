@@ -8,6 +8,7 @@ import type {
 } from '@babel/types';
 
 import createDebug from 'debug';
+import { kebabCase } from 'scule';
 
 import { logWarn } from '../utils';
 
@@ -197,7 +198,7 @@ function parseOptions(body: TSTypeElement[]): Option[] {
         }
 
         return {
-          name,
+          name: kebabCase(name),
           type: type ?? ValueType.String,
           required: !sig.optional,
           description: parseComment(sig.leadingComments)
