@@ -51,8 +51,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@babel/core": "^7.23.7",
-    "@babel/plugin-transform-typescript": "^7.23.6",
+    "@babel/core": "^7.24.4",
+    "@babel/plugin-transform-typescript": "^7.24.4",
     "@total-typescript/ts-reset": "^0.5.1",
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^20.12.7",
@@ -67,7 +67,7 @@
     "scule": "^1.2.0"
   },
   "devDependencies": {
-    "@babel/types": "^7.23.6",
+    "@babel/types": "^7.24.0",
     "@types/babel__core": "^7.20.5",
     "@types/debug": "^4.1.12"
   },
