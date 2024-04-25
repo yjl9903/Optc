@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "bumpp": "latest",
-    "magic-regexp": "^0.7.0",
+    "magic-regexp": "^0.8.0",
     "prettier": "latest",
     "turbo": "^1.13.2",
     "typescript": "^5.3.3",
