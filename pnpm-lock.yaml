@@ -88,8 +88,8 @@ importers:
         specifier: ^14.0.2
         version: 14.0.2
       jiti:
-        specifier: ^1.21.0
-        version: 1.21.0
+        specifier: ^1.21.7
+        version: 1.21.7
       kolorist:
         specifier: ^1.8.0
         version: 1.8.0
@@ -1522,8 +1522,8 @@ packages:
   isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
 
-  jiti@1.21.0:
-    resolution: {integrity: sha512-gFqAIbuKyyso/3G2qhiO2OM6shY6EPP/R0+mkDbyspxKazh8BXDC5FiFsUjlczgdNz/vfra0da2y+aHrusLG/Q==}
+  jiti@1.21.7:
+    resolution: {integrity: sha512-/imKNG4EbWNrVjoNC/1H5/9GFy+tqjGBHCaSsN+P2RnPqjsLmv6UD3Ej+Kj8nBWaRAwyk7kK5ZUc+OEatnTR3A==}
     hasBin: true
 
   jiti@2.4.2:
@@ -3625,7 +3625,7 @@ snapshots:
 
   isexe@2.0.0: {}
 
-  jiti@1.21.0: {}
+  jiti@1.21.7: {}
 
   jiti@2.4.2: {}
 
@@ -3724,7 +3724,7 @@ snapshots:
       esbuild: 0.20.2
       fs-extra: 11.2.0
       globby: 14.0.2
-      jiti: 1.21.0
+      jiti: 1.21.7
       mlly: 1.6.1
       mri: 1.2.0
       pathe: 1.1.2
@@ -4223,7 +4223,7 @@ snapshots:
       esbuild: 0.19.12
       globby: 13.2.2
       hookable: 5.5.3
-      jiti: 1.21.0
+      jiti: 1.21.7
       magic-string: 0.30.10
       mkdist: 1.5.1(typescript@5.5.4)
       mlly: 1.6.1
@@ -4260,7 +4260,7 @@ snapshots:
       '@babel/standalone': 7.24.4
       '@babel/types': 7.25.4
       defu: 6.1.4
-      jiti: 1.21.0
+      jiti: 1.21.7
       mri: 1.2.0
       scule: 1.3.0
     transitivePeerDependencies:
