@@ -58,7 +58,7 @@
     "@types/node": "^20.17.51",
     "axios": "^1.6.8",
     "breadc": "^0.9.7",
-    "debug": "^4.4.1",
+    "debug": "^4.4.3",
     "find-up": "^7.0.0",
     "fs-extra": "^11.2.0",
     "globby": "^14.0.2",
@@ -69,7 +69,7 @@
   "devDependencies": {
     "@babel/types": "^7.25.4",
     "@types/babel__core": "^7.20.5",
-    "@types/debug": "^4.1.12"
+    "@types/debug": "^4.1.13"
   },
   "packageManager": "pnpm@10.11.1",
   "engines": {
